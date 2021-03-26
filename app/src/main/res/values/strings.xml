@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Github User App</string>
+
     <string name="bottom_nav_menu_home">Home</string>
     <string name="bottom_nav_menu_explore">Explore</string>
     <string name="bottom_nav_menu_profile">Profile</string>
+
+    <string name="error_message">Something went wrong</string>
 </resources>

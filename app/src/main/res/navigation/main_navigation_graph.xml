@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="id.rllyhz.githubuserapp.ui.search.SearchFragment"
+        android:name="id.rllyhz.githubuserapp.ui.explore.ExploreFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_explore" />
 </navigation>

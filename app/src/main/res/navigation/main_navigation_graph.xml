@@ -16,7 +16,7 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/exploreFragment"
         android:name="id.rllyhz.githubuserapp.ui.explore.ExploreFragment"
         android:label="Explore"
         tools:layout="@layout/fragment_explore" />

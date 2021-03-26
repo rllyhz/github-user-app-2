@@ -7,7 +7,7 @@
         android:title="@string/bottom_nav_menu_home" />
 
     <item
-        android:id="@+id/searchFragment"
+        android:id="@+id/exploreFragment"
         android:icon="@drawable/ic_compass_filled"
         android:title="@string/bottom_nav_menu_explore" />
 

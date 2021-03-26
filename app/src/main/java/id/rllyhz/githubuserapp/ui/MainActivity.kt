@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import id.rllyhz.githubuserapp.R
@@ -35,7 +35,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupBottomNavigationView() {
         binding.apply {
-            setupActionBarWithNavController(navController)
+            // for setting up the top level destination of bottom nav view
+            val appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.homeFragment,
+                    R.id.searchFragment,
+                    R.id.profileFragment
+                )
+            )
+
+            setupActionBarWithNavController(navController, appBarConfiguration)
             bottomNavigationView.setupWithNavController(navController)
         }
     }

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentHomeBinding
 import id.rllyhz.githubuserapp.util.ResourceEvent
@@ -43,7 +44,7 @@ class HomeFragment : Fragment() {
                             progressbarHome.visibility = View.GONE
                             val users = event.resultList as List<User>
                             Log.d(activity?.packageName, users.toString())
-                            tvSayFromHome.text = "Oke!"
+                            tvSayFromHome.text = getString(R.string.success_message)
                         }
                         is ResourceEvent.Failure -> {
                             progressbarHome.visibility = View.GONE

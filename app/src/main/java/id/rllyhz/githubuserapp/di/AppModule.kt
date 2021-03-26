@@ -10,9 +10,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitInstance() : Retrofit =
+    fun provideRetrofitInstance(): Retrofit =
         Retrofit.Builder()
             .baseUrl(GithubApi.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+    @Provides
+    @Singleton
+    fun provideGithubApi(retrofit: Retrofit): GithubApi =
+        retrofit.create(GithubApi::class.java)
 }

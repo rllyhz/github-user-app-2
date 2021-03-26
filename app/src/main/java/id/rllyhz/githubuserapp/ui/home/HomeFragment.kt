@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.R
-import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentHomeBinding
 import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.collect
@@ -35,15 +34,27 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
+        collectUsersStateFlow()
 
+        viewModel.usersLiveData.observe(requireActivity()) { users ->
+            Log.d(activity?.packageName, users.toString())
+        }
+
+        viewModel.getUsers()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null // avoiding memory leaks
+    }
+
+    private fun collectUsersStateFlow() {
+        binding.apply {
             lifecycleScope.launchWhenStarted {
-                viewModel.users.collect { event ->
+                viewModel.usersStateFlow.collect { event ->
                     when (event) {
                         is ResourceEvent.Success<*> -> {
                             progressbarHome.visibility = View.GONE
-                            val users = event.resultList as List<User>
-                            Log.d(activity?.packageName, users.toString())
                             tvSayFromHome.text = getString(R.string.success_message)
                         }
                         is ResourceEvent.Failure -> {
@@ -60,12 +71,5 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
-        viewModel.getUsers()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null // avoiding memory leaks
     }
 }

@@ -17,5 +17,5 @@ data class UserDetailResponse(
     @SerializedName("public_repos") @Expose val repositoriesCount: Int,
     @SerializedName("public_gists") @Expose val gistsCount: Int,
     @SerializedName("followers") @Expose val followersCount: Int,
-    @SerializedName("following") @Expose val followingCount: Int,
+    @SerializedName("following") @Expose val followingCount: Int
 )

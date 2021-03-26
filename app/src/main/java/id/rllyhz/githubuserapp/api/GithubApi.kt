@@ -1,5 +1,6 @@
 package id.rllyhz.githubuserapp.api
 
+import id.rllyhz.githubuserapp.data.response.SearchUsersResponse
 import id.rllyhz.githubuserapp.data.response.UserDetailResponse
 import id.rllyhz.githubuserapp.data.response.UsersResponse
 import retrofit2.Call
@@ -18,4 +19,7 @@ interface GithubApi {
 
     @GET("users/{username}")
     suspend fun getUserDetailOf(@Path("username") username: String) : Call<UserDetailResponse>
+
+    @GET("search/users")
+    suspend fun searchUsers(@Query("q") query: String) : Call<SearchUsersResponse>
 }

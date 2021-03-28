@@ -78,6 +78,7 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
                     }
                     is ResourceEvent.Failure -> {
                         setProgressbarStatus(false)
+                        tvFeedbackMessage.text = resources.getString(R.string.error_message)
                         setFeedbackMessageStatus(true)
                     }
                     is ResourceEvent.Loading -> {

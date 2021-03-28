@@ -43,6 +43,6 @@
     <string name="user_detail_content_desc_repository_icon">Repository Icon</string>
 
     <!-- for feedback message -->
-    <string name="error_message">Something went wrong</string>
+    <string name="error_message">Sorry, something went wrong :(</string>
     <string name="success_message">Successfully fetched!</string>
 </resources>

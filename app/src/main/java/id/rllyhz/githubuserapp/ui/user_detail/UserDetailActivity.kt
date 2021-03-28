@@ -18,7 +18,7 @@ class UserDetailActivity : AppCompatActivity() {
 
     companion object {
         const val USER_EXTRAS = "USER_EXTRAS"
-        private val TAB_TITLES = listOf(
+        val TAB_TITLES = listOf(
             R.string.user_detail_following_label,
             R.string.user_detail_followers_label
         )

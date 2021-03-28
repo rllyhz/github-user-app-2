@@ -25,8 +25,8 @@ class FollowersViewModel @Inject constructor(
     private val _state: MutableStateFlow<ResourceEvent> = MutableStateFlow(ResourceEvent.Empty)
     val state: StateFlow<ResourceEvent> = _state
 
-    private val _followings: MutableLiveData<List<User>> = MutableLiveData()
-    val followings: LiveData<List<User>> = _followings
+    private val _followers: MutableLiveData<List<User>> = MutableLiveData()
+    val followers: LiveData<List<User>> = _followers
 
     fun getFollowingOfUser(username: String) {
         viewModelScope.launch(dispachers.default) {
@@ -39,7 +39,7 @@ class FollowersViewModel @Inject constructor(
                     _state.value = ResourceEvent.Success(null, null)
 
                     withContext(dispachers.main) {
-                        _followings.value = usersResponse.data!!
+                        _followers.value = usersResponse.data!!
                     }
                 }
             }

@@ -59,4 +59,20 @@ class MainRepository @Inject constructor(
             Resource.Error(application.getString(R.string.error_message))
         }
     }
+
+    suspend fun getFollowingOfUser(username: String) : Resource<List<User>> {
+        return try {
+            val response = githubApi.getFollowingOfUser(username)
+            val result = response.body()
+
+            if (response.isSuccessful && result != null) {
+                val users = DataConverter.usersResponseToUsersModel(result)
+                Resource.Success(users)
+            } else {
+                Resource.Error(response.message())
+            }
+        } catch (e: Exception) {
+            Resource.Error(application.getString(R.string.error_message))
+        }
+    }
 }

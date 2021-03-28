@@ -60,7 +60,7 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
             adapter = usersAdapter
         }
 
-        viewModel.followings.observe(requireActivity()) { users ->
+        viewModel.followers.observe(requireActivity()) { users ->
             usersAdapter?.submitList(users)
         }
     }

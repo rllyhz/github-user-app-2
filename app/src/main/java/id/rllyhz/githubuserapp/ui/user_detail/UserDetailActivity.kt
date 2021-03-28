@@ -1,9 +1,9 @@
 package id.rllyhz.githubuserapp.ui.user_detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
@@ -18,6 +18,7 @@ class UserDetailActivity : AppCompatActivity() {
 
     companion object {
         const val USER_EXTRAS = "USER_EXTRAS"
+
         val TAB_TITLES = listOf(
             R.string.user_detail_following_label,
             R.string.user_detail_followers_label

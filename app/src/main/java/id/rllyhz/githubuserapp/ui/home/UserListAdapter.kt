@@ -35,8 +35,9 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserListViewHolder>(Us
                     .into(sivItemUserAvatar)
 
                 tvItemUserUsername.text = user.username
-
-                callback?.onDetailIconClick(user)
+                itemView.setOnClickListener {
+                    callback?.onDetailIconClick(user)
+                }
             }
         }
     }

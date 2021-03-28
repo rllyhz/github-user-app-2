@@ -28,8 +28,8 @@ class UserDetailActivity : AppCompatActivity() {
         const val USER_EXTRAS = "USER_EXTRAS"
 
         val TAB_TITLES = listOf(
-            R.string.user_detail_following_label,
-            R.string.user_detail_followers_label
+            R.string.user_detail_followers_label,
+            R.string.user_detail_following_label
         )
     }
 

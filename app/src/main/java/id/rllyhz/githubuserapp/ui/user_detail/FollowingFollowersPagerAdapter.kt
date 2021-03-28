@@ -7,11 +7,13 @@ import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.ui.followers.FollowersFragment
 import id.rllyhz.githubuserapp.ui.following.FollowingFragment
 
-class FollowingFollowersPagerAdapter(activity: AppCompatActivity, private val user: User) : FragmentStateAdapter(activity) {
+class FollowingFollowersPagerAdapter(activity: AppCompatActivity, private val user: User) :
+    FragmentStateAdapter(activity) {
     override fun createFragment(position: Int): Fragment =
         when (position) {
-            1 -> FollowersFragment(user)
-            else -> FollowingFragment(user)
+            0 -> FollowersFragment(user)
+            1 -> FollowingFragment(user)
+            else -> FollowersFragment(user)
         }
 
     override fun getItemCount(): Int =

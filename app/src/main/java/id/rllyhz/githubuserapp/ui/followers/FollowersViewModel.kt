@@ -28,7 +28,7 @@ class FollowersViewModel @Inject constructor(
     private val _followers: MutableLiveData<List<User>> = MutableLiveData()
     val followers: LiveData<List<User>> = _followers
 
-    fun getFollowingOfUser(username: String) {
+    fun getFollowersOfUser(username: String) {
         viewModelScope.launch(dispachers.default) {
             _state.value = ResourceEvent.Loading
 

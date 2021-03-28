@@ -32,7 +32,7 @@
     <string name="user_detail_following_followers_format">%d followers - %d followings</string>
     <string name="user_detail_company_name_format">halo %d</string>
     <string name="user_detail_following_label">Following</string>
-    <string name="user_detail_followers_label">Following</string>
+    <string name="user_detail_followers_label">Followers</string>
 
     <!-- for feedback message -->
     <string name="error_message">Something went wrong</string>

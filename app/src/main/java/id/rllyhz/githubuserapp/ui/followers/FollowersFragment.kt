@@ -33,7 +33,7 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
         usersAdapter = UserListAdapter()
         usersAdapter?.setOnItemListener(this)
 
-        viewModel.getFollowingOfUser(user.username)
+        viewModel.getFollowersOfUser(user.username)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

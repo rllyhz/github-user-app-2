@@ -1,6 +1,10 @@
 package id.rllyhz.githubuserapp.ui.user_detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
@@ -14,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.ActivityUserDetailBinding
+import id.rllyhz.githubuserapp.util.DataConverter
 import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.collect
 
@@ -64,7 +69,20 @@ class UserDetailActivity : AppCompatActivity() {
                 tvUserDetailBio.text = user.bio
                 tvUserDetailCompany.text = user.companyName
                 tvUserDetailLocation.text = user.location
-                tvUserDetailBlog.text = user.blogUrl
+
+                // if blog url of user exists
+                if (user.blogUrl != DataConverter.STRING_NULL) {
+                    tvUserDetailBlog.text = SpannableString(user.blogUrl).apply {
+                        setSpan(UnderlineSpan(), 0, user.blogUrl.length, 0)
+                    }
+
+                    tvUserDetailBlog.setOnClickListener {
+                        val openLinkIntent = Intent(Intent.ACTION_VIEW, Uri.parse(user.blogUrl))
+                        startActivity(openLinkIntent)
+                    }
+                } else {
+                    tvUserDetailBlog.text = user.blogUrl
+                }
 
                 tvUserDetailFollowingFollowersCount.text = resources.getString(
                     R.string.user_detail_following_followers_format,

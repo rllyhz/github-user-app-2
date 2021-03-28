@@ -5,7 +5,7 @@ import id.rllyhz.githubuserapp.data.response.UserDetailResponse
 import id.rllyhz.githubuserapp.data.response.UsersResponse
 
 object DataConverter {
-    private val STRING_NULL = "-"
+    val STRING_NULL = "-"
 
     fun usersResponseToUsersModel(usersResponse: List<UsersResponse>): List<User> {
         val allUsers = mutableListOf<User>()

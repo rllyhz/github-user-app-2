@@ -18,6 +18,7 @@
             android:id="@+id/siv_item_user_avatar"
             android:layout_width="@dimen/item_user_avatar_size"
             android:layout_height="@dimen/item_user_avatar_size"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_launcher_round"

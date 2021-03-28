@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.databinding.FragmentHomeBinding
@@ -22,6 +23,14 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
 
+    private var usersAdapter: UserListAdapter? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        usersAdapter = UserListAdapter()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,10 +43,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setInitialUI()
         collectUsersStateFlow()
 
         viewModel.usersLiveData.observe(requireActivity()) { users ->
-            Log.d(activity?.packageName, users.toString())
+            usersAdapter?.submitList(users)
         }
 
         viewModel.getUsers()
@@ -46,6 +56,19 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null // avoiding memory leaks
+        usersAdapter = null
+    }
+
+    private fun setInitialUI() {
+        binding.apply {
+            progressbarHome.visibility = View.VISIBLE
+
+            recyclerviewUsers.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = usersAdapter
+            }
+        }
     }
 
     private fun collectUsersStateFlow() {
@@ -54,20 +77,26 @@ class HomeFragment : Fragment() {
                 viewModel.usersStateFlow.collect { event ->
                     when (event) {
                         is ResourceEvent.Success<*> -> {
-                            progressbarHome.visibility = View.GONE
+                            setProgressBarStatus(false)
                             event.resultList
                         }
                         is ResourceEvent.Failure -> {
-                            progressbarHome.visibility = View.GONE
-
+                            setProgressBarStatus(false)
                         }
                         is ResourceEvent.Loading -> {
-                            progressbarHome.visibility = View.VISIBLE
+                            setProgressBarStatus(true)
                         }
                         else -> Unit
                     }
                 }
             }
+        }
+    }
+
+    private fun setProgressBarStatus(state: Boolean) {
+        binding.progressbarHome.visibility = when (state) {
+            true -> View.VISIBLE
+            else -> View.GONE
         }
     }
 }

@@ -28,18 +28,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/user_detail_distance_views"
-            android:text="@string/user_detail_fullname"
             app:layout_constraintLeft_toRightOf="@id/siv_user_detail_avatar"
-            app:layout_constraintTop_toTopOf="@id/siv_user_detail_avatar" />
+            app:layout_constraintTop_toTopOf="@id/siv_user_detail_avatar"
+            tools:text="@string/user_detail_fullname" />
 
         <TextView
             android:id="@+id/tv_user_detail_username"
             style="@style/MyTextMedium.UserDetailUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/user_detail_username"
             app:layout_constraintLeft_toLeftOf="@+id/tv_user_detail_fullname"
-            app:layout_constraintTop_toBottomOf="@id/tv_user_detail_fullname" />
+            app:layout_constraintTop_toBottomOf="@id/tv_user_detail_fullname"
+            tools:text="@string/user_detail_username" />
 
         <TextView
             android:id="@+id/tv_user_detail_bio_label"
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/user_detail_distance_views"
-            android:text="Bio"
+            android:text="@string/user_detaill_bio_label"
             app:layout_constraintLeft_toLeftOf="@id/siv_user_detail_avatar"
             app:layout_constraintTop_toBottomOf="@id/siv_user_detail_avatar" />
 
@@ -59,15 +59,15 @@
             android:background="@drawable/bg_user_detail_bio"
             android:gravity="center_vertical"
             android:padding="12dp"
-            android:text="@string/app_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_user_detail_bio_label" />
+            app:layout_constraintTop_toBottomOf="@id/tv_user_detail_bio_label"
+            tools:text="@string/user_detail_bio" />
 
         <ImageView
             android:id="@+id/iv_user_detail_buildings_icon"
             android:layout_width="@dimen/user_detail_icon_size"
             android:layout_height="@dimen/user_detail_icon_size"
             android:layout_marginTop="@dimen/user_detail_distance_views"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/user_detail_content_desc_company_icon"
             app:layout_constraintLeft_toLeftOf="@id/tv_user_detail_bio"
             app:layout_constraintTop_toBottomOf="@id/tv_user_detail_bio"
             app:srcCompat="@drawable/ic_buildings" />
@@ -78,17 +78,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="@string/user_detail_company_name"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_buildings_icon"
             app:layout_constraintLeft_toRightOf="@id/iv_user_detail_buildings_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_user_detail_buildings_icon" />
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_buildings_icon"
+            tools:text="@string/user_detail_company_name" />
 
         <ImageView
             android:id="@+id/iv_user_detail_location_icon"
             android:layout_width="@dimen/user_detail_icon_size"
             android:layout_height="@dimen/user_detail_icon_size"
             android:layout_marginTop="@dimen/user_detail_distance_views"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/user_detail_content_desc_location_icon"
             app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_buildings_icon"
             app:layout_constraintTop_toBottomOf="@id/tv_user_detail_company"
             app:srcCompat="@drawable/ic_location_outlined" />
@@ -99,17 +99,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="@string/user_detail_location"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_location_icon"
             app:layout_constraintLeft_toRightOf="@id/iv_user_detail_location_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_user_detail_location_icon" />
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_location_icon"
+            tools:text="@string/user_detail_location" />
 
         <ImageView
             android:id="@+id/iv_user_detail_link_icon"
             android:layout_width="@dimen/user_detail_icon_size"
             android:layout_height="@dimen/user_detail_icon_size"
             android:layout_marginTop="@dimen/user_detail_distance_views"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/user_detail_content_desc_blog_url_icon"
             app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_location_icon"
             app:layout_constraintTop_toBottomOf="@id/tv_user_detail_location"
             app:srcCompat="@drawable/ic_link_outlined" />
@@ -120,17 +120,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="@string/user_detail_blog"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_link_icon"
             app:layout_constraintLeft_toRightOf="@id/iv_user_detail_link_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_user_detail_link_icon" />
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_link_icon"
+            tools:text="@string/user_detail_blog" />
 
         <ImageView
             android:id="@+id/iv_user_detail_people_icon"
             android:layout_width="@dimen/user_detail_icon_size"
             android:layout_height="@dimen/user_detail_icon_size"
             android:layout_marginTop="@dimen/user_detail_distance_views"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/user_detail_content_desc_follows_icon"
             app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_link_icon"
             app:layout_constraintTop_toBottomOf="@id/tv_user_detail_blog"
             app:srcCompat="@drawable/ic_people_outlined" />
@@ -141,17 +141,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="@string/user_detail_following_followers"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_people_icon"
             app:layout_constraintLeft_toRightOf="@id/iv_user_detail_people_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_user_detail_people_icon" />
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_people_icon"
+            tools:text="@string/user_detail_following_followers" />
 
         <ImageView
             android:id="@+id/iv_user_detail_repository_icon"
             android:layout_width="@dimen/user_detail_icon_size"
             android:layout_height="@dimen/user_detail_icon_size"
             android:layout_marginTop="@dimen/user_detail_distance_views"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/user_detail_content_desc_repository_icon"
             app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_people_icon"
             app:layout_constraintTop_toBottomOf="@id/tv_user_detail_following_followers_count"
             app:srcCompat="@drawable/ic_repository_filled" />
@@ -162,10 +162,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="@string/user_detail_repository"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_repository_icon"
             app:layout_constraintLeft_toRightOf="@id/iv_user_detail_repository_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_user_detail_repository_icon" />
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_repository_icon"
+            tools:text="@string/user_detail_repository" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout_user_detail"

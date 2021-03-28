@@ -22,6 +22,8 @@
     <string name="user_detail_username">rllyhz</string>
     <string name="user_detail_company_name">Soal-Web</string>
     <string name="user_detail_location">Semarang, Central Java, Indonesia.</string>
+    <string name="user_detaill_bio_label">Bio</string>
+    <string name="user_detail_bio">Take a deep breath for better ideas ☺</string>
     <string name="user_detail_blog">rllyhz.github.io</string>
     <string name="user_detail_following_followers">18 followers - 22 followings</string>
     <string name="user_detail_repository">43 repositories</string>
@@ -33,6 +35,11 @@
     <string name="user_detail_company_name_format">halo %d</string>
     <string name="user_detail_following_label">Following</string>
     <string name="user_detail_followers_label">Followers</string>
+
+    <string name="user_detail_content_desc_location_icon">Location Icon</string>
+    <string name="user_detail_content_desc_company_icon">Company Icon</string>
+    <string name="user_detail_content_desc_blog_url_icon">Blog Url Icon</string>
+    <string name="user_detail_content_desc_follows_icon">Follows Icon</string>
 
     <!-- for feedback message -->
     <string name="error_message">Something went wrong</string>

@@ -34,9 +34,9 @@ class HomeViewModel @Inject constructor( // @ViewModelInject is deprecated for l
 
             when (val usersResponse = repository.getUsers()) {
                 is Resource.Error -> _usersEvent.value =
-                    ResourceEvent.Failure(usersResponse.message ?: "")
+                    ResourceEvent.Failure(usersResponse.message!!)
                 is Resource.Success -> {
-                    _usersEvent.value = ResourceEvent.Success(null, null)
+                    _usersEvent.value = ResourceEvent.Success(usersResponse.data!!, null)
 
                     withContext(dispachers.main) {
                         _usersLiveData.value = usersResponse.data!!

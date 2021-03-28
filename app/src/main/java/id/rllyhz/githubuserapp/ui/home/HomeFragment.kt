@@ -55,6 +55,7 @@ class HomeFragment : Fragment() {
                     when (event) {
                         is ResourceEvent.Success<*> -> {
                             progressbarHome.visibility = View.GONE
+                            event.resultList
                             tvSayFromHome.text = getString(R.string.success_message)
                         }
                         is ResourceEvent.Failure -> {

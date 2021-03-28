@@ -1,8 +1,11 @@
 package id.rllyhz.githubuserapp.di
 
+import android.app.Application
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import id.rllyhz.githubuserapp.api.GithubApi
 import id.rllyhz.githubuserapp.repository.MainRepository
@@ -32,8 +35,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideMainRepository(githubApi: GithubApi): MainRepository =
-        MainRepository(githubApi)
+    fun provideMainRepository(
+        githubApi: GithubApi,
+        application: Application
+    ): MainRepository =
+        MainRepository(githubApi, application)
 
     @Provides
     @Singleton

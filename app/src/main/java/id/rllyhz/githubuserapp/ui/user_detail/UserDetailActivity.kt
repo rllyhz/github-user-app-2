@@ -2,16 +2,22 @@ package id.rllyhz.githubuserapp.ui.user_detail
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.ActivityUserDetailBinding
+import id.rllyhz.githubuserapp.util.ResourceEvent
+import kotlinx.coroutines.flow.collect
 
+@AndroidEntryPoint
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
     private lateinit var mAdapter: FollowingFollowersPagerAdapter
@@ -35,7 +41,7 @@ class UserDetailActivity : AppCompatActivity() {
         val userExtra = intent.getParcelableExtra<User>(USER_EXTRAS)
 
         if (userExtra != null) {
-            //viewModel.getUser(userExtra)
+            viewModel.getUser(userExtra.username)
 
             setupActionBar()
             setupUI()
@@ -74,10 +80,22 @@ class UserDetailActivity : AppCompatActivity() {
                     user.followersCount
                 )
 
-                tvUserDetailRepositoryCount.text = resources.getQuantityText(
+                tvUserDetailRepositoryCount.text = resources.getQuantityString(
                     R.plurals.user_detail_repository_format,
+                    user.repositoriesCount,
                     user.repositoriesCount
                 )
+            }
+
+            lifecycleScope.launchWhenStarted {
+                viewModel.state.collect { event ->
+                    when (event) {
+                        is ResourceEvent.Success<*> -> setProgressBarStatus(false)
+                        is ResourceEvent.Failure -> setProgressBarStatus(false)
+                        is ResourceEvent.Loading -> setProgressBarStatus(true)
+                        else -> setProgressBarStatus(false)
+                    }
+                }
             }
         }
     }
@@ -87,6 +105,13 @@ class UserDetailActivity : AppCompatActivity() {
             title = getString(R.string.action_bar_title_user_detail)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+        }
+    }
+
+    private fun setProgressBarStatus(state: Boolean) {
+        binding.progressbarUserDetail.visibility = when (state) {
+            true -> View.VISIBLE
+            else -> View.GONE
         }
     }
 

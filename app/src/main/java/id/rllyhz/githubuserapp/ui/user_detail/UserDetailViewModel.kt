@@ -8,10 +8,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.repository.MainRepository
 import id.rllyhz.githubuserapp.util.DispacherProvider
+import id.rllyhz.githubuserapp.util.Resource
 import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,15 +21,28 @@ class UserDetailViewModel @Inject constructor(
     private val repository: MainRepository,
     private val dispachers: DispacherProvider
 ) : ViewModel() {
+
     private val _currentUser = MutableLiveData<User>()
     val user: LiveData<User> = _currentUser
 
     private val _state = MutableStateFlow<ResourceEvent>(ResourceEvent.Empty)
     val state: StateFlow<ResourceEvent> = _state
 
-    fun getUser(userId: Int) {
+    fun getUser(username: String) {
         viewModelScope.launch(dispachers.default) {
             _state.value = ResourceEvent.Loading
+
+            when (val userDetailResponse = repository.getUserDetail(username)) {
+                is Resource.Error -> _state.value =
+                    ResourceEvent.Failure(userDetailResponse.message!!)
+                is Resource.Success -> {
+                    _state.value = ResourceEvent.Success(null, userDetailResponse.data!!)
+
+                    withContext(dispachers.main) {
+                        _currentUser.value = userDetailResponse.data!!
+                    }
+                }
+            }
         }
     }
 }

@@ -56,16 +56,13 @@ class HomeFragment : Fragment() {
                         is ResourceEvent.Success<*> -> {
                             progressbarHome.visibility = View.GONE
                             event.resultList
-                            tvSayFromHome.text = getString(R.string.success_message)
                         }
                         is ResourceEvent.Failure -> {
                             progressbarHome.visibility = View.GONE
-                            tvSayFromHome.setTextColor(Color.RED)
-                            tvSayFromHome.text = event.message
+
                         }
                         is ResourceEvent.Loading -> {
                             progressbarHome.visibility = View.VISIBLE
-                            tvSayFromHome.text = ""
                         }
                         else -> Unit
                     }

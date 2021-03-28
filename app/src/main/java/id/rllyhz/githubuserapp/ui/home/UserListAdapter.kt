@@ -42,7 +42,7 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserListViewHolder>(Us
     }
 
     // diffutil for handling comparison of items
-    class UserComparator() : DiffUtil.ItemCallback<User>() {
+    class UserComparator : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean =
             oldItem.id == newItem.id
 

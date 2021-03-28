@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
+import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.ItemUserBinding
 
@@ -30,8 +33,8 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserListViewHolder>(Us
             binding.apply {
                 Glide.with(itemView)
                     .load(user.avatarUrl)
-//                    .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
-//                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+                    .transition(DrawableTransitionOptions.withCrossFade())
                     .into(sivItemUserAvatar)
 
                 tvItemUserUsername.text = user.username

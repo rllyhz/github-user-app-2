@@ -3,12 +3,17 @@ package id.rllyhz.githubuserapp.ui.user_detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.githubuserapp.R
+import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.ActivityUserDetailBinding
 
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
+
+    private val viewModel: UserDetailViewModel by viewModels()
 
     companion object {
         const val USER_EXTRAS = "USER_EXTRAS"
@@ -19,16 +24,24 @@ class UserDetailActivity : AppCompatActivity() {
         binding = ActivityUserDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //setupUI()
+        val userExtra = intent.getParcelableExtra<User>(USER_EXTRAS)
+
+        if (userExtra != null) {
+            viewModel.setUser(userExtra)
+
+            setupActionBar()
+            setupUI()
+        }
     }
 
     private fun setupUI() {
-        setupActionBar()
-
-        binding.apply {
-            Glide.with(this@UserDetailActivity)
-                .load("")
-                .into(sivUserDetailAvatar)
+        viewModel.user.observe(this) { user ->
+            binding.apply {
+                Glide.with(this@UserDetailActivity)
+                    .load(user.avatarUrl)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(sivUserDetailAvatar)
+            }
         }
     }
 

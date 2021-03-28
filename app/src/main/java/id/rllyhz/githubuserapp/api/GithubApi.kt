@@ -20,6 +20,12 @@ interface GithubApi {
     @GET("users/{username}")
     suspend fun getUserDetailOf(@Path("username") username: String): Response<UserDetailResponse>
 
+    @GET("users/{username}/following")
+    suspend fun getFollowingOfUser(@Path("username") username: String): Response<List<UsersResponse>>
+
+    @GET("users/{username}/followers")
+    suspend fun getFollowersOfUser(@Path("username") username: String): Response<List<UsersResponse>>
+
     @GET("search/users")
     suspend fun searchUsers(@Query("q") query: String): Response<SearchUsersResponse>
 }

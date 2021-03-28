@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.tabs.TabLayoutMediator
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.ActivityUserDetailBinding
 
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
+    private lateinit var mAdapter: FollowingFollowersPagerAdapter
 
     private val viewModel: UserDetailViewModel by viewModels()
 
@@ -33,7 +35,7 @@ class UserDetailActivity : AppCompatActivity() {
         val userExtra = intent.getParcelableExtra<User>(USER_EXTRAS)
 
         if (userExtra != null) {
-            viewModel.setUser(userExtra)
+            //viewModel.getUser(userExtra)
 
             setupActionBar()
             setupUI()
@@ -41,13 +43,41 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        viewModel.user.observe(this) { user ->
-            binding.apply {
+
+        binding.apply {
+
+            mAdapter = FollowingFollowersPagerAdapter(this@UserDetailActivity)
+            viewPagerUserDetail.adapter = mAdapter
+
+            TabLayoutMediator(tabLayoutUserDetail, viewPagerUserDetail) { tab, position ->
+                tab.text = resources.getString(TAB_TITLES[position])
+            }.attach()
+
+            viewModel.user.observe(this@UserDetailActivity) { user ->
+
                 Glide.with(this@UserDetailActivity)
                     .load(user.avatarUrl)
                     .apply(RequestOptions.placeholderOf(R.drawable.bg_placeholder_images))
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(sivUserDetailAvatar)
+
+                tvUserDetailFullname.text = user.fullName
+                tvUserDetailUsername.text = user.username
+                tvUserDetailBio.text = user.bio
+                tvUserDetailCompany.text = user.companyName
+                tvUserDetailLocation.text = user.location
+                tvUserDetailBlog.text = user.blogUrl
+
+                tvUserDetailFollowingFollowersCount.text = resources.getString(
+                    R.string.user_detail_following_followers_format,
+                    user.followingCount,
+                    user.followersCount
+                )
+
+                tvUserDetailRepositoryCount.text = resources.getQuantityText(
+                    R.plurals.user_detail_repository_format,
+                    user.repositoriesCount
+                )
             }
         }
     }

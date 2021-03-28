@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyTextBold" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="MyTextMedium" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="MyTextRegular" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+</resources>

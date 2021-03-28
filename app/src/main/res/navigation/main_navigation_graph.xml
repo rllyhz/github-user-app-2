@@ -8,22 +8,16 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="id.rllyhz.githubuserapp.ui.home.HomeFragment"
-        android:label="Home"
+        android:label="@string/action_bar_title_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="id.rllyhz.githubuserapp.ui.profile.ProfileFragment"
-        android:label="Profile"
+        android:label="@string/action_bar_title_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/exploreFragment"
         android:name="id.rllyhz.githubuserapp.ui.explore.ExploreFragment"
-        android:label="Explore"
+        android:label="@string/action_bar_title_explore"
         tools:layout="@layout/fragment_explore" />
-    <fragment
-        android:id="@+id/userDetailFragment"
-        android:name="id.rllyhz.githubuserapp.ui.user_detail.UserDetailFragment"
-        android:label="User Detail"
-        tools:layout="@layout/fragment_user_detail" />
-    <action android:id="@+id/action_global_userDetailFragment" app:destination="@id/userDetailFragment" />
 </navigation>

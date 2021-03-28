@@ -1,5 +1,6 @@
 package id.rllyhz.githubuserapp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentHomeBinding
+import id.rllyhz.githubuserapp.ui.user_detail.UserDetailActivity
 import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.collect
 
@@ -102,7 +104,9 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
     }
 
     override fun onDetailIconClick(user: User) {
-        val action = HomeFragmentDirections.actionGlobalUserDetailFragment()
-        findNavController().navigate(action)
+        requireActivity()
+            .startActivity(
+                Intent(requireActivity(), UserDetailActivity::class.java)
+            )
     }
 }

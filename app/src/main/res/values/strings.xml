@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Github User App</string>
 
+    <string name="action_bar_title_home">Home</string>
+    <string name="action_bar_title_explore">Explore</string>
+    <string name="action_bar_title_profile">Profile</string>
+    <string name="action_bar_title_user_detail">User Detail</string>
+
     <string name="bottom_nav_menu_home">Home</string>
     <string name="bottom_nav_menu_explore">Explore</string>
     <string name="bottom_nav_menu_profile">Profile</string>

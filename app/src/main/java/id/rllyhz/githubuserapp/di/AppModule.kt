@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.rllyhz.githubuserapp.api.GithubApi
-import id.rllyhz.githubuserapp.repository.main.MainRepository
+import id.rllyhz.githubuserapp.repository.MainRepository
 import id.rllyhz.githubuserapp.util.DispacherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

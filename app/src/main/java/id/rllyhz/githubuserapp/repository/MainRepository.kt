@@ -1,4 +1,4 @@
-package id.rllyhz.githubuserapp.repository.main
+package id.rllyhz.githubuserapp.repository
 
 import id.rllyhz.githubuserapp.api.GithubApi
 import id.rllyhz.githubuserapp.data.model.User

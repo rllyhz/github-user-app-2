@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.rllyhz.githubuserapp.data.model.User
-import id.rllyhz.githubuserapp.repository.main.MainRepository
+import id.rllyhz.githubuserapp.repository.MainRepository
 import id.rllyhz.githubuserapp.util.DispacherProvider
 import id.rllyhz.githubuserapp.util.Resource
 import id.rllyhz.githubuserapp.util.ResourceEvent

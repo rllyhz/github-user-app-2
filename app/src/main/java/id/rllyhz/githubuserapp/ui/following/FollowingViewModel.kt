@@ -6,7 +6,7 @@ import id.rllyhz.githubuserapp.repository.MainRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class FollowersViewModel @Inject constructor(
+class FollowingViewModel @Inject constructor(
     private val repository: MainRepository
 ) : ViewModel() {
 

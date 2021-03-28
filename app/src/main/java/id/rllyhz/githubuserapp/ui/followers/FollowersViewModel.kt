@@ -32,7 +32,7 @@ class FollowersViewModel @Inject constructor(
         viewModelScope.launch(dispachers.default) {
             _state.value = ResourceEvent.Loading
 
-            when (val usersResponse = repository.getFollowingsOfUser(username)) {
+            when (val usersResponse = repository.getFollowersOfUser(username)) {
                 is Resource.Error -> _state.value =
                     ResourceEvent.Failure(usersResponse.message!!)
                 is Resource.Success -> {

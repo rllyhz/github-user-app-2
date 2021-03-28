@@ -7,4 +7,5 @@
     <dimen name="user_detail_avatar_size">82dp</dimen>
     <dimen name="user_detail_icon_size">18dp</dimen>
     <dimen name="user_detail_distance_views">16dp</dimen>
+    <dimen name="user_detail_view_pager_height">380dp</dimen>
 </resources>

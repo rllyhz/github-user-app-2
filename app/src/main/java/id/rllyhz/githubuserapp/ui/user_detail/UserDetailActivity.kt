@@ -51,10 +51,6 @@ class UserDetailActivity : AppCompatActivity() {
     private fun setupUI() {
         binding.apply {
 
-            TabLayoutMediator(tabLayoutUserDetail, viewPagerUserDetail) { tab, position ->
-                tab.text = resources.getString(TAB_TITLES[position])
-            }.attach()
-
             viewModel.user.observe(this@UserDetailActivity) { user ->
 
                 Glide.with(this@UserDetailActivity)
@@ -85,6 +81,10 @@ class UserDetailActivity : AppCompatActivity() {
                 // also set pager adapter
                 mAdapter = FollowingFollowersPagerAdapter(this@UserDetailActivity, user)
                 viewPagerUserDetail.adapter = mAdapter
+
+                TabLayoutMediator(tabLayoutUserDetail, viewPagerUserDetail) { tab, position ->
+                    tab.text = resources.getString(TAB_TITLES[position])
+                }.attach()
             }
 
             lifecycleScope.launchWhenStarted {

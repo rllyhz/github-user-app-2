@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.data.model.User
@@ -101,6 +102,7 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
     }
 
     override fun onDetailIconClick(user: User) {
-        Toast.makeText(requireContext(), user.username, Toast.LENGTH_SHORT).show()
+        val action = HomeFragmentDirections.actionGlobalUserDetailFragment()
+        findNavController().navigate(action)
     }
 }

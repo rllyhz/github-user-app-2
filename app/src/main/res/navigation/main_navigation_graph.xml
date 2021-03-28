@@ -20,4 +20,10 @@
         android:name="id.rllyhz.githubuserapp.ui.explore.ExploreFragment"
         android:label="Explore"
         tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="id.rllyhz.githubuserapp.ui.user_detail.UserDetailFragment"
+        android:label="User Detail"
+        tools:layout="@layout/fragment_user_detail" />
+    <action android:id="@+id/action_global_userDetailFragment" app:destination="@id/userDetailFragment" />
 </navigation>

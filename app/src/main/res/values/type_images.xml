@@ -4,4 +4,8 @@
     <style name="ShapeableImageItemUserRounded">
         <item name="cornerSize">@dimen/item_user_radius_size</item>
     </style>
+
+    <style name="ShapeableImageUserDetailCircular">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

@@ -1,37 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/siv_user_detail_avatar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@mipmap/ic_launcher" />
-
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout_user_detail"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/background_color_light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/siv_user_detail_avatar" />
+        android:padding="@dimen/user_detail_distance_views">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager_user_detail"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout_user_detail" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/siv_user_detail_avatar"
+            android:layout_width="@dimen/user_detail_avatar_size"
+            android:layout_height="@dimen/user_detail_avatar_size"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeableImageUserDetailCircular"
+            tools:srcCompat="@mipmap/ic_launcher" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_user_detail_fullname"
+            style="@style/MyTextBold.UserDetailFullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/user_detail_distance_views"
+            android:text="@string/user_detail_fullname"
+            app:layout_constraintLeft_toRightOf="@id/siv_user_detail_avatar"
+            app:layout_constraintTop_toTopOf="@id/siv_user_detail_avatar" />
+
+        <TextView
+            android:id="@+id/tv_user_detail_username"
+            style="@style/MyTextMedium.UserDetailUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_detail_username"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_user_detail_fullname"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_detail_fullname" />
+
+        <ImageView
+            android:id="@+id/iv_user_detail_buildings_icon"
+            android:layout_width="@dimen/user_detail_icon_size"
+            android:layout_height="@dimen/user_detail_icon_size"
+            android:layout_marginTop="@dimen/user_detail_distance_views"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintLeft_toLeftOf="@id/siv_user_detail_avatar"
+            app:layout_constraintTop_toBottomOf="@id/siv_user_detail_avatar"
+            app:srcCompat="@drawable/ic_buildings" />
+
+        <TextView
+            android:id="@+id/tv_user_detail_company"
+            style="@style/MyTextMedium.UserDetailOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/user_detail_company_name"
+            app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_buildings_icon"
+            app:layout_constraintLeft_toRightOf="@id/iv_user_detail_buildings_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_buildings_icon" />
+
+        <ImageView
+            android:id="@+id/iv_user_detail_location_icon"
+            android:layout_width="@dimen/user_detail_icon_size"
+            android:layout_height="@dimen/user_detail_icon_size"
+            android:layout_marginTop="@dimen/user_detail_distance_views"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_buildings_icon"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_detail_buildings_icon"
+            app:srcCompat="@drawable/ic_location_outlined" />
+
+        <TextView
+            android:id="@+id/tv_user_detail_location"
+            style="@style/MyTextMedium.UserDetailOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/user_detail_location"
+            app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_location_icon"
+            app:layout_constraintLeft_toRightOf="@id/iv_user_detail_location_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_location_icon" />
+
+        <ImageView
+            android:id="@+id/iv_user_detail_link_icon"
+            android:layout_width="@dimen/user_detail_icon_size"
+            android:layout_height="@dimen/user_detail_icon_size"
+            android:layout_marginTop="@dimen/user_detail_distance_views"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_location_icon"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_detail_location_icon"
+            app:srcCompat="@drawable/ic_link_outlined" />
+
+        <TextView
+            android:id="@+id/tv_user_detail_bio"
+            style="@style/MyTextMedium.UserDetailOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/user_detail_blog"
+            app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_link_icon"
+            app:layout_constraintLeft_toRightOf="@id/iv_user_detail_link_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_link_icon" />
+
+        <ImageView
+            android:id="@+id/iv_user_detail_people_icon"
+            android:layout_width="@dimen/user_detail_icon_size"
+            android:layout_height="@dimen/user_detail_icon_size"
+            android:layout_marginTop="@dimen/user_detail_distance_views"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_link_icon"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_detail_link_icon"
+            app:srcCompat="@drawable/ic_people_outlined" />
+
+        <TextView
+            android:id="@+id/tv_user_detail_following_followers_count"
+            style="@style/MyTextMedium.UserDetailOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/user_detail_following_followers"
+            app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_people_icon"
+            app:layout_constraintLeft_toRightOf="@id/iv_user_detail_people_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_people_icon" />
+
+        <ImageView
+            android:id="@+id/iv_user_detail_repository_icon"
+            android:layout_width="@dimen/user_detail_icon_size"
+            android:layout_height="@dimen/user_detail_icon_size"
+            android:layout_marginTop="@dimen/user_detail_distance_views"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_people_icon"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_detail_people_icon"
+            app:srcCompat="@drawable/ic_repository_filled" />
+
+        <TextView
+            android:id="@+id/tv_user_detail_repository_count"
+            style="@style/MyTextMedium.UserDetailOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/user_detail_repository"
+            app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_repository_icon"
+            app:layout_constraintLeft_toRightOf="@id/iv_user_detail_repository_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_user_detail_repository_icon" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_user_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@color/background_color_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_detail_repository_icon" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_user_detail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout_user_detail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

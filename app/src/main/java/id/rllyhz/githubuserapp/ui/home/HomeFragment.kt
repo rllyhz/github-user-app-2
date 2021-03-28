@@ -28,6 +28,7 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
         super.onCreate(savedInstanceState)
 
         usersAdapter = UserListAdapter()
+        usersAdapter?.setOnItemListener(this)
     }
 
     override fun onCreateView(

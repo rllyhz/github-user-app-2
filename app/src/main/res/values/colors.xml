@@ -8,5 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="item_user_card_background">@color/black</color>
+    <color name="background_color">#FF121212</color>
+    <color name="background_color_2">#FF191C2F</color>
+
+    <color name="item_user_card_background">@color/background_color_2</color>
 </resources>

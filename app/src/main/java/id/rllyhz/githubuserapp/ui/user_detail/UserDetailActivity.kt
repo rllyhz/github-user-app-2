@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.ActivityUserDetailBinding
@@ -39,6 +40,7 @@ class UserDetailActivity : AppCompatActivity() {
             binding.apply {
                 Glide.with(this@UserDetailActivity)
                     .load(user.avatarUrl)
+                    .apply(RequestOptions.placeholderOf(R.drawable.bg_placeholder_images))
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(sivUserDetailAvatar)
             }

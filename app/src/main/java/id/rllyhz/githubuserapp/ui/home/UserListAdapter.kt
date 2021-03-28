@@ -33,7 +33,7 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserListViewHolder>(Us
             binding.apply {
                 Glide.with(itemView)
                     .load(user.avatarUrl)
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+                    .apply(RequestOptions.placeholderOf(R.drawable.bg_placeholder_images))
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(sivItemUserAvatar)
 

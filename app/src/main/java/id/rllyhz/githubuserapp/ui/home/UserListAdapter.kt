@@ -23,6 +23,7 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserListViewHolder>(Us
         }
     }
 
+    // viewholder
     inner class UserListViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
@@ -32,15 +33,29 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserListViewHolder>(Us
                     .into(sivItemUserAvatar)
 
                 tvItemUserUsername.text = user.username
+
+                callback?.onDetailIconClick(user)
             }
         }
     }
 
+    // diffutil for handling comparison of items
     class UserComparator() : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean =
             oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean =
             oldItem == newItem // cause already using data class
+    }
+
+    // for item click listener
+    interface ItemClickCallback {
+        fun onDetailIconClick(user: User)
+    }
+
+    private var callback: ItemClickCallback? = null
+
+    fun setOnItemListener(listener: ItemClickCallback) {
+        callback = listener
     }
 }

@@ -6,6 +6,8 @@
     <string name="bottom_nav_menu_profile">Profile</string>
 
     <string name="item_user_username">jakeWraton</string>
+    <string name="item_user_detail_icon_content_description">Detail Button</string>
+    <string name="item_user_content_description_format">%d photo</string>
 
     <string name="error_message">Something went wrong</string>
     <string name="success_message">Successfully fetched!</string>

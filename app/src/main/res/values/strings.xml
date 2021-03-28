@@ -5,6 +5,8 @@
     <string name="bottom_nav_menu_explore">Explore</string>
     <string name="bottom_nav_menu_profile">Profile</string>
 
+    <string name="item_user_username">jakeWraton</string>
+
     <string name="error_message">Something went wrong</string>
     <string name="success_message">Successfully fetched!</string>
 </resources>

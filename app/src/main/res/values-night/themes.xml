@@ -12,5 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <!-- For changing up the font of the default actionbar -->
+        <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 </resources>

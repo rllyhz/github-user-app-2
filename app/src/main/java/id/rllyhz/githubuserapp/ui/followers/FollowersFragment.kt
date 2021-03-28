@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +24,7 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
     // for this class, no need view binding
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressbar: ProgressBar
+    private lateinit var tvFeedbackMessage: TextView
     private var usersAdapter: UserListAdapter? = null
 
     private val viewModel: FollowersViewModel by viewModels()
@@ -51,6 +53,7 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
     private fun setupUI(view: View) {
         progressbar = view.findViewById(R.id.progressbar_follows)
         recyclerView = view.findViewById(R.id.recyclerview_following)
+        tvFeedbackMessage = view.findViewById(R.id.tv_follows_feedback_message)
 
         setProgressbarStatus(true)
 
@@ -65,18 +68,21 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
         }
     }
 
-    fun collectFollowingStateFlow() {
+    private fun collectFollowingStateFlow() {
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect { state ->
                 when (state) {
                     is ResourceEvent.Success<*> -> {
                         setProgressbarStatus(false)
+                        setFeedbackMessageStatus(false)
                     }
                     is ResourceEvent.Failure -> {
                         setProgressbarStatus(false)
+                        setFeedbackMessageStatus(true)
                     }
                     is ResourceEvent.Loading -> {
                         setProgressbarStatus(true)
+                        setFeedbackMessageStatus(false)
                     }
                     else -> Unit
                 }
@@ -84,8 +90,15 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
         }
     }
 
-    fun setProgressbarStatus(state: Boolean) {
+    private fun setProgressbarStatus(state: Boolean) {
         progressbar.visibility = when (state) {
+            true -> View.VISIBLE
+            else -> View.GONE
+        }
+    }
+
+    private fun setFeedbackMessageStatus(state: Boolean) {
+        tvFeedbackMessage.visibility = when (state) {
             true -> View.VISIBLE
             else -> View.GONE
         }

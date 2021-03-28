@@ -34,9 +34,8 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserListViewHolder>(Us
             binding.apply {
                 Glide.with(itemView)
                     .load(user.avatarUrl)
-                    .apply(RequestOptions.centerCropTransform())
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
-                    .transition(DrawableTransitionOptions.withCrossFade())
+//                    .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+//                    .transition(DrawableTransitionOptions.withCrossFade())
                     .into(sivItemUserAvatar)
 
                 tvItemUserUsername.text = user.username

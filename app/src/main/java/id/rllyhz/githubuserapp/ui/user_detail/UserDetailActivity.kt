@@ -10,6 +10,10 @@ import id.rllyhz.githubuserapp.databinding.ActivityUserDetailBinding
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
 
+    companion object {
+        const val USER_EXTRAS = "USER_EXTRAS"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserDetailBinding.inflate(layoutInflater)

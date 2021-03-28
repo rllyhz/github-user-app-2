@@ -104,9 +104,13 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
     }
 
     override fun onDetailIconClick(user: User) {
+        val userDetailIntent = Intent(requireActivity(), UserDetailActivity::class.java).apply {
+            //putExtra(UserDetailActivity.USER_EXTRAS, user)
+        }
+
         requireActivity()
             .startActivity(
-                Intent(requireActivity(), UserDetailActivity::class.java)
+                userDetailIntent
             )
     }
 }

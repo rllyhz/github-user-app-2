@@ -21,7 +21,7 @@ class ProfileFragment : Fragment() {
     private var mAdapter: FollowingFollowersPagerAdapter? = null
     private lateinit var user: User
 
-    private val viwModel: ProfileViewModel by viewModels()
+    private val viewModel: ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

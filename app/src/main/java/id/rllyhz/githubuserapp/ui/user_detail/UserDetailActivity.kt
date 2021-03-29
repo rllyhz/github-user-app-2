@@ -108,13 +108,44 @@ class UserDetailActivity : AppCompatActivity() {
             lifecycleScope.launchWhenStarted {
                 viewModel.state.collect { event ->
                     when (event) {
-                        is ResourceEvent.Success<*> -> setProgressBarStatus(false)
-                        is ResourceEvent.Failure -> setProgressBarStatus(false)
+                        is ResourceEvent.Success<*> -> {
+                            setProgressBarStatus(false)
+                            setupSuccesUI()
+                        }
+                        is ResourceEvent.Failure -> {
+                            setProgressBarStatus(false)
+                            setupFailureUI()
+                        }
                         is ResourceEvent.Loading -> setProgressBarStatus(true)
                         else -> setProgressBarStatus(false)
                     }
                 }
             }
+        }
+    }
+
+    private fun setupSuccesUI() {
+        binding.apply {
+            viewPagerUserDetail.visibility = View.VISIBLE
+            tabLayoutUserDetail.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setupFailureUI() {
+        binding.apply {
+            sivUserDetailAvatar.setImageResource(R.drawable.bg_placeholder_images)
+            tvUserDetailFullname.text = resources.getString(R.string.error_message_label)
+            tvUserDetailUsername.text = DataConverter.STRING_NULL
+            tvUserDetailBioLabel.text = resources.getString(R.string.error_message_label)
+            tvUserDetailBio.text = resources.getString(R.string.error_message_description)
+            tvUserDetailCompany.text = DataConverter.STRING_NULL
+            tvUserDetailLocation.text = DataConverter.STRING_NULL
+            tvUserDetailBlog.text = DataConverter.STRING_NULL
+            tvUserDetailFollowingFollowersCount.text = DataConverter.STRING_NULL
+            tvUserDetailRepositoryCount.text = DataConverter.STRING_NULL
+
+            viewPagerUserDetail.visibility = View.GONE
+            tabLayoutUserDetail.visibility = View.GONE
         }
     }
 

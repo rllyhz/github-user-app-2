@@ -66,10 +66,10 @@
             android:id="@+id/iv_user_detail_buildings_icon"
             android:layout_width="@dimen/user_detail_icon_size"
             android:layout_height="@dimen/user_detail_icon_size"
-            android:layout_marginTop="@dimen/user_detail_distance_views"
             android:contentDescription="@string/user_detail_content_desc_company_icon"
+            app:layout_constraintBottom_toBottomOf="@id/tv_user_detail_company"
             app:layout_constraintLeft_toLeftOf="@id/tv_user_detail_bio"
-            app:layout_constraintTop_toBottomOf="@id/tv_user_detail_bio"
+            app:layout_constraintTop_toTopOf="@id/tv_user_detail_company"
             app:srcCompat="@drawable/ic_buildings" />
 
         <TextView
@@ -78,9 +78,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_user_detail_buildings_icon"
+            android:layout_marginTop="@dimen/user_detail_distance_views"
             app:layout_constraintLeft_toRightOf="@id/iv_user_detail_buildings_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_user_detail_buildings_icon"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_detail_bio"
             tools:text="@string/user_detail_company_name" />
 
         <ImageView
@@ -192,8 +192,8 @@
             android:id="@+id/progressbar_user_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

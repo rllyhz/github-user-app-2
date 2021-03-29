@@ -157,9 +157,7 @@
             app:layout_constraintTop_toBottomOf="@id/mBtn_profile_edit_profile"
             app:tabIndicatorColor="?attr/colorSecondary"
             app:tabSelectedTextColor="?attr/colorSecondary"
-            app:tabTextColor="@color/grey_light">
-
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextColor="@color/grey_light" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_profile"

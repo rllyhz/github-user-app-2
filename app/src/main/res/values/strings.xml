@@ -44,6 +44,7 @@
     <!-- for feedback message -->
     <string name="error_message_label">Error</string>
     <string name="error_message">Sorry, something went wrong :(</string>
+    <string name="redirect_message">Sorry, unauthorized activity</string>
     <string name="error_message_description">This happens maybe because of there is no connection or something unexpected internally occurred.</string>
     <string name="success_message">Successfully fetched!</string>
 </resources>

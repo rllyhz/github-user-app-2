@@ -8,6 +8,7 @@ import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -51,6 +52,9 @@ class UserDetailActivity : AppCompatActivity() {
 
             setupActionBar()
             setupUI()
+        } else {
+            finish()
+            showFeedback()
         }
     }
 
@@ -167,6 +171,14 @@ class UserDetailActivity : AppCompatActivity() {
 
     private fun showSwipeRefreshLayout(state: Boolean) {
         binding.swipeRefreshUserDetail.isRefreshing = state
+    }
+
+    private fun showFeedback() {
+        Toast.makeText(
+            applicationContext,
+            resources.getString(R.string.redirect_message),
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

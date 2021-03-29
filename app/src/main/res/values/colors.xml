@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey_dark">#313131</color>
     <color name="grey_light">#787878</color>
+    <color name="grey_lighter">#C7C7C7</color>
 
     <color name="background_color_dark">#FF121212</color>
     <color name="background_color_light">#FF191C2F</color>

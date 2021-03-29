@@ -2,6 +2,8 @@
 <resources>
     <dimen name="bottom_nav_radius_size">16dp</dimen>
 
+    <dimen name="home_user_list_height">460dp</dimen>
+
     <dimen name="item_user_radius_size">12dp</dimen>
     <dimen name="item_user_avatar_size">82dp</dimen>
     <dimen name="item_user_icon_size">32dp</dimen>

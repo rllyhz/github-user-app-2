@@ -7,6 +7,10 @@
     <string name="action_bar_title_profile">Profile</string>
     <string name="action_bar_title_user_detail">User Detail</string>
 
+    <!-- for headline in home ui -->
+    <string name="headline_1_text">Find your developers to make the world more intelligent!</string>
+    <string name="headline_2_text">23.4 million more developers available around the world</string>
+
     <!-- for bottom nav -->
     <string name="bottom_nav_menu_home">Home</string>
     <string name="bottom_nav_menu_explore">Explore</string>

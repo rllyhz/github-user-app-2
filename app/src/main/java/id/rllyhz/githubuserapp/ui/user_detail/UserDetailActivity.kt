@@ -103,21 +103,27 @@ class UserDetailActivity : AppCompatActivity() {
                 TabLayoutMediator(tabLayoutUserDetail, viewPagerUserDetail) { tab, position ->
                     tab.text = resources.getString(TAB_TITLES[position])
                 }.attach()
+
+
+                // swiperefresh
+                swipeRefreshUserDetail.setOnRefreshListener {
+                    viewModel.getUser(user.username)
+                }
             }
 
             lifecycleScope.launchWhenStarted {
                 viewModel.state.collect { event ->
                     when (event) {
                         is ResourceEvent.Success<*> -> {
-                            setProgressBarStatus(false)
+                            showSwipeRefreshLayout(false)
                             setupSuccesUI()
                         }
                         is ResourceEvent.Failure -> {
-                            setProgressBarStatus(false)
+                            showSwipeRefreshLayout(false)
                             setupFailureUI()
                         }
-                        is ResourceEvent.Loading -> setProgressBarStatus(true)
-                        else -> setProgressBarStatus(false)
+                        is ResourceEvent.Loading -> showSwipeRefreshLayout(true)
+                        else -> showSwipeRefreshLayout(false)
                     }
                 }
             }
@@ -157,11 +163,8 @@ class UserDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setProgressBarStatus(state: Boolean) {
-        binding.progressbarUserDetail.visibility = when (state) {
-            true -> View.VISIBLE
-            else -> View.GONE
-        }
+    private fun showSwipeRefreshLayout(state: Boolean) {
+        binding.swipeRefreshUserDetail.isRefreshing = state
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

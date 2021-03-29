@@ -62,12 +62,17 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
 
     private fun setInitialUI() {
         binding.apply {
-            progressbarHome.visibility = View.VISIBLE
+            showSwipeRefreshLayout(false)
 
             recyclerviewUsers.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = usersAdapter
+            }
+
+            // swiperefresh
+            swipeRefreshHome.setOnRefreshListener {
+                viewModel.getUsers()
             }
         }
     }
@@ -78,13 +83,15 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
                 viewModel.usersStateFlow.collect { event ->
                     when (event) {
                         is ResourceEvent.Success<*> -> {
-                            setProgressBarStatus(false)
+                            showSwipeRefreshLayout(false)
+                            setupSuccessUI()
                         }
                         is ResourceEvent.Failure -> {
-                            setProgressBarStatus(false)
+                            showSwipeRefreshLayout(false)
+                            setupFailureUI()
                         }
                         is ResourceEvent.Loading -> {
-                            setProgressBarStatus(true)
+                            showSwipeRefreshLayout(true)
                         }
                         else -> Unit
                     }
@@ -93,11 +100,22 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
         }
     }
 
-    private fun setProgressBarStatus(state: Boolean) {
-        binding.progressbarHome.visibility = when (state) {
-            true -> View.VISIBLE
-            else -> View.GONE
+    private fun setupFailureUI() {
+        binding.apply {
+            tvHomeErrorMessage.visibility = View.VISIBLE
+            tvHomeErrorMessageDescription.visibility = View.VISIBLE
         }
+    }
+
+    private fun setupSuccessUI() {
+        binding.apply {
+            tvHomeErrorMessage.visibility = View.GONE
+            tvHomeErrorMessageDescription.visibility = View.GONE
+        }
+    }
+
+    private fun showSwipeRefreshLayout(state: Boolean) {
+        binding.swipeRefreshHome.isRefreshing = state
     }
 
     override fun onDetailIconClick(user: User) {

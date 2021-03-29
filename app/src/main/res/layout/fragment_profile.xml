@@ -1,46 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:fitsSystemWindows="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
-            app:title="@string/app_name">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/siv_profile_avatar"
+            android:layout_width="@dimen/user_detail_avatar_size"
+            android:layout_height="@dimen/user_detail_avatar_size"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeableImageCircular"
+            tools:srcCompat="@mipmap/ic_launcher" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+        <TextView
+            android:id="@+id/tv_profile_fullname"
+            style="@style/MyTextBold.UserDetailFullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/user_detail_fullname"
+            app:layout_constraintLeft_toLeftOf="@id/siv_profile_avatar"
+            app:layout_constraintRight_toRightOf="@id/siv_profile_avatar"
+            app:layout_constraintTop_toBottomOf="@id/siv_profile_avatar" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
+        <TextView
+            android:id="@+id/tv_profile_username"
+            style="@style/MyTextMedium.UserDetailUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_detail_username"
+            app:layout_constraintLeft_toLeftOf="@id/siv_profile_avatar"
+            app:layout_constraintRight_toRightOf="@id/siv_profile_avatar"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_fullname" />
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        <TextView
+            android:id="@+id/tv_profile_bio"
+            style="@style/MyTextMedium.UserDetailUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/user_detail_username"
+            app:layout_constraintLeft_toLeftOf="@id/siv_profile_avatar"
+            app:layout_constraintRight_toRightOf="@id/siv_profile_avatar"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_username" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
+            android:id="@+id/ll_profile_repo_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/profile_margin_to_guideline_horizontal"
+            android:layout_marginEnd="@dimen/profile_follows_repo_margin"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/guideline1">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            <TextView
+                android:id="@+id/tv_profile_repo_count"
+                style="@style/MyTextMedium.UserDetailOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_repository_count" />
 
-    </androidx.core.widget.NestedScrollView>
+            <TextView
+                android:id="@+id/tv_profile_repo_label"
+                style="@style/MyTextMedium.UserDetailUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_repository_label" />
+        </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <LinearLayout
+            android:id="@+id/ll_profile_followers_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/profile_margin_to_guideline_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline1">
+
+            <TextView
+                android:id="@+id/tv_profile_followers_count"
+                style="@style/MyTextMedium.UserDetailOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_followers_count" />
+
+            <TextView
+                android:id="@+id/tv_profile_followers_label"
+                style="@style/MyTextMedium.UserDetailUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_followers_label" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_profile_following_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/profile_follows_repo_margin"
+            android:layout_marginTop="@dimen/profile_margin_to_guideline_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintRight_toLeftOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/guideline1">
+
+            <TextView
+                android:id="@+id/tv_profile_following_count"
+                style="@style/MyTextMedium.UserDetailOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_following_count" />
+
+            <TextView
+                android:id="@+id/tv_profile_following_label"
+                style="@style/MyTextMedium.UserDetailUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_following_label" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mBtn_profile_edit_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/profile_margin_top_edit_button"
+            android:text="@string/profile_edit_button_text"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondary"
+            app:backgroundTint="@color/background_color_light"
+            app:layout_constraintLeft_toRightOf="@id/guideline2"
+            app:layout_constraintRight_toLeftOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/ll_profile_followers_container"
+            app:rippleColor="?attr/colorSecondary" />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/background_color_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mBtn_profile_edit_profile"
+            app:tabIndicatorColor="?attr/colorSecondary"
+            app:tabSelectedTextColor="?attr/colorSecondary"
+            app:tabTextColor="@color/grey_light">
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_profile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/profile_view_pager_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guideline2"
+            app:layout_constraintRight_toLeftOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout_profile" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_bio" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

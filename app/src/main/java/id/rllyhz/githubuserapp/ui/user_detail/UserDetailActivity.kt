@@ -34,11 +34,6 @@ class UserDetailActivity : AppCompatActivity() {
 
     companion object {
         const val USER_EXTRAS = "USER_EXTRAS"
-
-        val TAB_TITLES = listOf(
-            R.string.user_detail_followers_label,
-            R.string.user_detail_following_label
-        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,7 +103,8 @@ class UserDetailActivity : AppCompatActivity() {
                 viewPagerUserDetail.adapter = mAdapter
 
                 TabLayoutMediator(tabLayoutUserDetail, viewPagerUserDetail) { tab, position ->
-                    tab.text = resources.getString(TAB_TITLES[position])
+                    tab.text =
+                        resources.getString(FollowingFollowersPagerAdapter.TAB_TITLES[position])
                 }.attach()
 
 

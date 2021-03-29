@@ -5,13 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.adapter.FollowingFollowersPagerAdapter
-import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentProfileBinding
+import id.rllyhz.githubuserapp.util.DataConverter
+import id.rllyhz.githubuserapp.util.ResourceEvent
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -19,7 +27,6 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!! // this approach is from official documentation
 
     private var mAdapter: FollowingFollowersPagerAdapter? = null
-    private lateinit var user: User
 
     private val viewModel: ProfileViewModel by viewModels()
 
@@ -36,27 +43,109 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUI()
+        collectState()
+
+        // this should be from a real user retrieved from current user that being active
+        // but for now this is just for dummy case, my own username as the user
+        val username = "rllyhz"
+        viewModel.getUserInfo(username)
     }
 
     private fun setUI() {
 
-        mAdapter = FollowingFollowersPagerAdapter(requireActivity() as AppCompatActivity, user)
-
         binding.apply {
 
+            swipeRefreshProfile.setColorSchemeColors(
+                ContextCompat.getColor(requireContext(), R.color.redish_500),
+                ContextCompat.getColor(requireContext(), R.color.blue_200),
+                ContextCompat.getColor(requireContext(), R.color.blue_500)
+            )
 
-            viewPagerProfile.adapter = mAdapter
+            viewModel.currentUserActive.observe(requireActivity()) { currentUserActive ->
 
-            TabLayoutMediator(tabLayoutProfile, viewPagerProfile) { tab, position ->
-                tab.text =
-                    resources.getString(FollowingFollowersPagerAdapter.TAB_TITLES[position])
-            }.attach()
+                currentUserActive.apply {
 
-            // SwipeRefreshLayout
-            swipeRefreshProfile.setOnRefreshListener {
-                //
+                    Glide.with(requireActivity())
+                        .load(avatarUrl)
+                        .apply(RequestOptions.placeholderOf(R.drawable.bg_placeholder_images))
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(sivProfileAvatar)
+
+                    tvProfileFullname.text = fullName
+                    tvProfileUsername.text = username
+                    tvProfileBio.text = bio
+
+                    tvProfileFollowersCount.text =
+                        DataConverter.getFollowingAndFollowersFormat(followersCount)
+                    tvProfileFollowingCount.text =
+                        DataConverter.getFollowingAndFollowersFormat(followingCount)
+                }
+
+                mAdapter = FollowingFollowersPagerAdapter(
+                    requireActivity() as AppCompatActivity,
+                    currentUserActive
+                )
+
+                viewPagerProfile.adapter = mAdapter
+
+                TabLayoutMediator(tabLayoutProfile, viewPagerProfile) { tab, position ->
+                    tab.text =
+                        resources.getString(FollowingFollowersPagerAdapter.TAB_TITLES[position])
+                }.attach()
+
+                // SwipeRefreshLayout
+                swipeRefreshProfile.setOnRefreshListener {
+                    viewModel.getUserInfo(currentUserActive.username)
+                }
             }
         }
+    }
+
+    private fun collectState() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.state.collect { state ->
+                when (state) {
+                    is ResourceEvent.Success<*> -> {
+                        showSwipeRefreshLayout(false)
+                        setupSuccessUI()
+                    }
+                    is ResourceEvent.Failure -> {
+                        showSwipeRefreshLayout(false)
+                        setupFailureUI()
+                    }
+                    is ResourceEvent.Loading -> {
+                        showSwipeRefreshLayout(true)
+                    }
+                    else -> Unit
+                }
+            }
+        }
+    }
+
+    private fun setupFailureUI() {
+        binding.apply {
+            sivProfileAvatar.setImageResource(R.drawable.bg_placeholder_images)
+            tvProfileFullname.text = resources.getString(R.string.error_message_label)
+            tvProfileUsername.text = DataConverter.STRING_NULL
+            tvProfileBio.text = resources.getString(R.string.error_message_description)
+            tvProfileFollowingCount.text = DataConverter.STRING_NULL
+            tvProfileFollowersCount.text = DataConverter.STRING_NULL
+            tvProfileRepoCount.text = DataConverter.STRING_NULL
+
+            viewPagerProfile.visibility = View.GONE
+            tabLayoutProfile.visibility = View.GONE
+        }
+    }
+
+    private fun setupSuccessUI() {
+        binding.apply {
+            tabLayoutProfile.visibility = View.VISIBLE
+            viewPagerProfile.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showSwipeRefreshLayout(state: Boolean) {
+        binding.swipeRefreshProfile.isRefreshing = state
     }
 
     override fun onDestroy() {

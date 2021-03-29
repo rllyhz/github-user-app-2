@@ -20,43 +20,45 @@
                 android:layout_width="@dimen/user_detail_avatar_size"
                 android:layout_height="@dimen/user_detail_avatar_size"
                 android:layout_marginTop="32dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeableImageCircular"
-                tools:srcCompat="@mipmap/ic_launcher" />
+                app:srcCompat="@drawable/bg_placeholder_images" />
 
             <TextView
                 android:id="@+id/tv_profile_fullname"
-                style="@style/MyTextBold.UserDetailFullname"
+                style="@style/MyTextBold.ProfilelFullname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/user_detail_fullname"
                 app:layout_constraintLeft_toLeftOf="@id/siv_profile_avatar"
                 app:layout_constraintRight_toRightOf="@id/siv_profile_avatar"
-                app:layout_constraintTop_toBottomOf="@id/siv_profile_avatar" />
+                app:layout_constraintTop_toBottomOf="@id/siv_profile_avatar"
+                tools:text="@string/user_detail_fullname" />
 
             <TextView
                 android:id="@+id/tv_profile_username"
-                style="@style/MyTextMedium.UserDetailUsername"
+                style="@style/MyTextMedium.ProfileUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/user_detail_username"
                 app:layout_constraintLeft_toLeftOf="@id/siv_profile_avatar"
                 app:layout_constraintRight_toRightOf="@id/siv_profile_avatar"
-                app:layout_constraintTop_toBottomOf="@id/tv_profile_fullname" />
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_fullname"
+                tools:text="@string/user_detail_username" />
 
             <TextView
                 android:id="@+id/tv_profile_bio"
-                style="@style/MyTextMedium.UserDetailUsername"
-                android:layout_width="wrap_content"
+                style="@style/MyTextRegular.ProfileOther"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/user_detail_username"
-                app:layout_constraintLeft_toLeftOf="@id/siv_profile_avatar"
-                app:layout_constraintRight_toRightOf="@id/siv_profile_avatar"
-                app:layout_constraintTop_toBottomOf="@id/tv_profile_username" />
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                app:layout_constraintLeft_toLeftOf="@id/guideline2"
+                app:layout_constraintRight_toRightOf="@id/guideline3"
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_username"
+                tools:text="@string/user_detail_bio" />
 
             <LinearLayout
                 android:id="@+id/ll_profile_repo_container"
@@ -71,14 +73,14 @@
 
                 <TextView
                     android:id="@+id/tv_profile_repo_count"
-                    style="@style/MyTextMedium.UserDetailOther"
+                    style="@style/MyTextMedium.ProfileOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/profile_repository_count" />
+                    tools:text="@string/profile_repository_count" />
 
                 <TextView
                     android:id="@+id/tv_profile_repo_label"
-                    style="@style/MyTextMedium.UserDetailUsername"
+                    style="@style/MyTextRegular.ProfileOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_repository_label" />
@@ -97,14 +99,14 @@
 
                 <TextView
                     android:id="@+id/tv_profile_followers_count"
-                    style="@style/MyTextMedium.UserDetailOther"
+                    style="@style/MyTextMedium.ProfileOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/profile_followers_count" />
+                    tools:text="@string/profile_followers_count" />
 
                 <TextView
                     android:id="@+id/tv_profile_followers_label"
-                    style="@style/MyTextMedium.UserDetailUsername"
+                    style="@style/MyTextRegular.ProfileOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_followers_label" />
@@ -123,14 +125,14 @@
 
                 <TextView
                     android:id="@+id/tv_profile_following_count"
-                    style="@style/MyTextMedium.UserDetailOther"
+                    style="@style/MyTextMedium.ProfileOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/profile_following_count" />
+                    tools:text="@string/profile_following_count" />
 
                 <TextView
                     android:id="@+id/tv_profile_following_label"
-                    style="@style/MyTextMedium.UserDetailUsername"
+                    style="@style/MyTextRegular.ProfileOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_following_label" />

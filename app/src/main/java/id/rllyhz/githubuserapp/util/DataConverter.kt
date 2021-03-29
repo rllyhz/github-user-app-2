@@ -56,7 +56,7 @@ object DataConverter {
                 number.toString()
             else {
                 val exp = (ln(number.toDouble()) / ln(1000.0)).toInt()
-                String.format("%.1f %c", number / 1000.0.pow(exp.toDouble()), "kMGTPE"[exp - 1])
+                String.format("%.1f %c", number / 1000.0.pow(exp.toDouble()), "kMBTPE"[exp - 1])
             }
         }
 }

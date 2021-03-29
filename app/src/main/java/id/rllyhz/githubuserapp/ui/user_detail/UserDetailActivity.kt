@@ -1,5 +1,6 @@
 package id.rllyhz.githubuserapp.ui.user_detail
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -53,6 +54,7 @@ class UserDetailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("StringFormatMatches")
     private fun setupUI() {
         binding.apply {
 
@@ -86,8 +88,8 @@ class UserDetailActivity : AppCompatActivity() {
 
                 tvUserDetailFollowingFollowersCount.text = resources.getString(
                     R.string.user_detail_following_followers_format,
-                    user.followingCount,
-                    user.followersCount
+                    DataConverter.getFollowingAndFollowersFormat(user.followingCount),
+                    DataConverter.getFollowingAndFollowersFormat(user.followersCount)
                 )
 
                 tvUserDetailRepositoryCount.text = resources.getQuantityString(

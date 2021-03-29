@@ -31,8 +31,7 @@
         <item quantity="one">%d repository</item>
         <item quantity="other">%d repositories</item>
     </plurals>
-    <string name="user_detail_following_followers_format">%d followers - %d followings</string>
-    <string name="user_detail_company_name_format">halo %d</string>
+    <string name="user_detail_following_followers_format">%s followers - %s followings</string>
     <string name="user_detail_following_label">Following</string>
     <string name="user_detail_followers_label">Followers</string>
 

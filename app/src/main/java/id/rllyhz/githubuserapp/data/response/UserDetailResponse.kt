@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class UserDetailResponse(
-    val id: Int,
+    val id: Long,
     @SerializedName("login") @Expose val username: String,
     @SerializedName("avatar_url") @Expose val avatarUrl: String,
     @SerializedName("name") @Expose val fullName: String?,
@@ -16,6 +16,6 @@ data class UserDetailResponse(
     val bio: String?,
     @SerializedName("public_repos") @Expose val repositoriesCount: Int,
     @SerializedName("public_gists") @Expose val gistsCount: Int,
-    @SerializedName("followers") @Expose val followersCount: Int,
-    @SerializedName("following") @Expose val followingCount: Int
+    @SerializedName("followers") @Expose val followersCount: Long,
+    @SerializedName("following") @Expose val followingCount: Long
 )

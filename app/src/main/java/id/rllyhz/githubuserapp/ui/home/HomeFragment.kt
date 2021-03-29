@@ -111,6 +111,8 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
 
     private fun setupFailureUI() {
         binding.apply {
+            mcardHomeHeadlineContainer.visibility = View.GONE
+            tvHomeUserListLabel.visibility = View.GONE
             recyclerviewUsers.visibility = View.GONE
             tvHomeErrorMessage.visibility = View.VISIBLE
             tvHomeErrorMessageDescription.visibility = View.VISIBLE
@@ -119,6 +121,8 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
 
     private fun setupSuccessUI() {
         binding.apply {
+            mcardHomeHeadlineContainer.visibility = View.VISIBLE
+            tvHomeUserListLabel.visibility = View.VISIBLE
             recyclerviewUsers.visibility = View.VISIBLE
             tvHomeErrorMessage.visibility = View.GONE
             tvHomeErrorMessageDescription.visibility = View.GONE

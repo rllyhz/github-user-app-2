@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import id.rllyhz.githubuserapp.adapter.UserListAdapter
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentHomeBinding
 import id.rllyhz.githubuserapp.ui.user_detail.UserDetailActivity

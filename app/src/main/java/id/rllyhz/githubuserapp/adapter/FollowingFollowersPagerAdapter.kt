@@ -1,4 +1,4 @@
-package id.rllyhz.githubuserapp.ui.user_detail
+package id.rllyhz.githubuserapp.adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.ui.followers.FollowersFragment
 import id.rllyhz.githubuserapp.ui.following.FollowingFragment
+import id.rllyhz.githubuserapp.ui.user_detail.UserDetailActivity
 
 class FollowingFollowersPagerAdapter(activity: AppCompatActivity, private val user: User) :
     FragmentStateAdapter(activity) {

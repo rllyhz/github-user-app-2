@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.data.model.User
-import id.rllyhz.githubuserapp.ui.home.UserListAdapter
+import id.rllyhz.githubuserapp.adapter.UserListAdapter
 import id.rllyhz.githubuserapp.ui.user_detail.UserDetailActivity
 import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.collect

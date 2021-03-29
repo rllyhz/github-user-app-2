@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.R
+import id.rllyhz.githubuserapp.adapter.FollowingFollowersPagerAdapter
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.ActivityUserDetailBinding
 import id.rllyhz.githubuserapp.util.DataConverter

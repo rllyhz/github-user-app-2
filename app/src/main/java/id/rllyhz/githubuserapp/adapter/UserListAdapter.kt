@@ -1,4 +1,4 @@
-package id.rllyhz.githubuserapp.ui.home
+package id.rllyhz.githubuserapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

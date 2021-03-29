@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.adapter.UserListAdapter
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentHomeBinding
@@ -63,6 +65,12 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
 
     private fun setInitialUI() {
         binding.apply {
+            swipeRefreshHome.setColorSchemeColors(
+                ContextCompat.getColor(requireContext(), R.color.redish_500),
+                ContextCompat.getColor(requireContext(), R.color.blue_200),
+                ContextCompat.getColor(requireContext(), R.color.blue_500)
+            )
+
             showSwipeRefreshLayout(false)
 
             recyclerviewUsers.apply {

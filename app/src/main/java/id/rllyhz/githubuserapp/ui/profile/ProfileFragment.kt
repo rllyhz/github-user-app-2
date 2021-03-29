@@ -4,12 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
+import id.rllyhz.githubuserapp.adapter.FollowingFollowersPagerAdapter
+import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!! // this approach is from official documentation
+
+    private var mAdapter: FollowingFollowersPagerAdapter? = null
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,8 +27,36 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setUI()
+    }
+
+    private fun setUI() {
+
+        mAdapter = FollowingFollowersPagerAdapter(requireActivity() as AppCompatActivity, user)
+
+        binding.apply {
+
+
+            viewPagerProfile.adapter = mAdapter
+
+            TabLayoutMediator(tabLayoutProfile, viewPagerProfile) { tab, position ->
+                tab.text =
+                    resources.getString(FollowingFollowersPagerAdapter.TAB_TITLES[position])
+            }.attach()
+
+            // SwipeRefreshLayout
+            swipeRefreshProfile.setOnRefreshListener {
+                //
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null // avoiding memory leaks
+        mAdapter = null
     }
 }

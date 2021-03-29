@@ -75,6 +75,8 @@ class ProfileFragment : Fragment() {
                     tvProfileUsername.text = username
                     tvProfileBio.text = bio
 
+                    tvProfileRepoCount.text =
+                        DataConverter.getFollowingAndFollowersFormat(repositoriesCount)
                     tvProfileFollowersCount.text =
                         DataConverter.getFollowingAndFollowersFormat(followersCount)
                     tvProfileFollowingCount.text =

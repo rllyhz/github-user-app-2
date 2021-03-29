@@ -94,8 +94,8 @@ class UserDetailActivity : AppCompatActivity() {
 
                 tvUserDetailRepositoryCount.text = resources.getQuantityString(
                     R.plurals.user_detail_repository_format,
-                    user.repositoriesCount,
-                    user.repositoriesCount
+                    user.repositoriesCount.toInt(),
+                    user.repositoriesCount.toInt()
                 )
 
                 // also set pager adapter

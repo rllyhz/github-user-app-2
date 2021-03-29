@@ -14,8 +14,8 @@ data class UserDetailResponse(
     val email: String?,
     @SerializedName("twitter_username") @Expose val twitterUsername: String?,
     val bio: String?,
-    @SerializedName("public_repos") @Expose val repositoriesCount: Int,
-    @SerializedName("public_gists") @Expose val gistsCount: Int,
+    @SerializedName("public_repos") @Expose val repositoriesCount: Long,
+    @SerializedName("public_gists") @Expose val gistsCount: Long,
     @SerializedName("followers") @Expose val followersCount: Long,
     @SerializedName("following") @Expose val followingCount: Long
 )

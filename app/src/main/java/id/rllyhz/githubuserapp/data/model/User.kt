@@ -15,8 +15,8 @@ data class User(
     val email: String = "",
     val twitterUsername: String = "",
     val bio: String = "",
-    val repositoriesCount: Int = 0,
-    val gistsCount: Int = 0,
+    val repositoriesCount: Long = 0,
+    val gistsCount: Long = 0,
     val followersCount: Long = 0,
     val followingCount: Long = 0
 ) : Parcelable

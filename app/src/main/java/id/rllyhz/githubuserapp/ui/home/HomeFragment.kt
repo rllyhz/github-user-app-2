@@ -101,11 +101,19 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
                         }
                         is ResourceEvent.Loading -> {
                             showSwipeRefreshLayout(true)
+                            setupLoadingUI()
                         }
                         else -> Unit
                     }
                 }
             }
+        }
+    }
+
+    private fun setupLoadingUI() {
+        binding.apply {
+            tvHomeUserListLabel.visibility = View.GONE
+            recyclerviewUsers.visibility = View.GONE
         }
     }
 

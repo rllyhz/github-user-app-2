@@ -31,6 +31,7 @@ class HomeFragment : Fragment(), UserListAdapter.ItemClickCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setHasOptionsMenu(true)
         usersAdapter = UserListAdapter()
         usersAdapter?.setOnItemListener(this)
     }

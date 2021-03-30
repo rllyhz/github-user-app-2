@@ -65,4 +65,5 @@
     <string name="redirect_message">Sorry, unauthorized activity</string>
     <string name="error_message_description">This happens maybe because of there is no connection or something unexpected internally occurred.</string>
     <string name="success_message">Successfully fetched!</string>
+    <string name="result_not_found_message">Result not found!</string>
 </resources>

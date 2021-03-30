@@ -60,9 +60,22 @@ class ExploreFragment : Fragment() {
             }
 
             viewModel.searchResults.observe(requireActivity()) { users ->
-                userListAdapter?.submitList(users)
-                setupSuccessUI()
+                if (users.isEmpty())
+                    setupListEmptyUI()
+                else {
+                    userListAdapter?.submitList(users)
+                    setupSuccessUI()
+                }
             }
+        }
+    }
+
+    private fun setupListEmptyUI() {
+        binding.apply {
+            tvExploreNotFoundFeedback.visibility = View.VISIBLE
+            tvExploreUserListLabel.visibility = View.GONE
+            recyclerviewExplore.visibility = View.GONE
+            llIllustrationContainer.visibility = View.GONE
         }
     }
 
@@ -71,6 +84,7 @@ class ExploreFragment : Fragment() {
             tvExploreUserListLabel.visibility = View.GONE
             recyclerviewExplore.visibility = View.GONE
             llIllustrationContainer.visibility = View.GONE
+            tvExploreNotFoundFeedback.visibility = View.GONE
         }
     }
 
@@ -79,6 +93,7 @@ class ExploreFragment : Fragment() {
             tvExploreUserListLabel.visibility = View.VISIBLE
             recyclerviewExplore.visibility = View.VISIBLE
             llIllustrationContainer.visibility = View.GONE
+            tvExploreNotFoundFeedback.visibility = View.GONE
         }
     }
 
@@ -99,9 +114,11 @@ class ExploreFragment : Fragment() {
                 searchUsers(etExploreSearch.text.toString())
             }
 
-            recyclerviewExplore.setHasFixedSize(true)
-            recyclerviewExplore.layoutManager = LinearLayoutManager(requireContext())
-            recyclerviewExplore.adapter = userListAdapter
+            recyclerviewExplore.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = userListAdapter
+            }
 
             swipeRefreshExplore.setColorSchemeColors(
                 ContextCompat.getColor(requireContext(), R.color.redish_500),
@@ -119,6 +136,9 @@ class ExploreFragment : Fragment() {
     }
 
     private fun searchUsers(query: String) {
+        showSwipeRefreshLayout(false)
+        setSearchable(true)
+
         if (query.isEmpty()) {
             return
         }
@@ -159,6 +179,7 @@ class ExploreFragment : Fragment() {
                     is ResourceEvent.Loading -> {
                         showSwipeRefreshLayout(true)
                         setSearchable(false)
+                        binding.tvExploreNotFoundFeedback.visibility = View.GONE
                     }
                     else -> Unit
                 }

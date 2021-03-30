@@ -7,7 +7,7 @@
         <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
-    <style name="Widget.ExploreSearchView" parent="Widget.AppCompat.Light.SearchView">
+    <style name="ExploreSearchView" parent="Widget.AppCompat.Light.SearchView">
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/grey_light</item>
         <item name="android:fontFamily">@font/poppins_regular</item>

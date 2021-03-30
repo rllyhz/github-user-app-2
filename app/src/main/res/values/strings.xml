@@ -54,7 +54,10 @@
     <string name="profile_edit_button_text">Edit Profile</string>
 
     <string name="explore_search_hint">Search your developers…</string>
+    <string name="explore_user_list_label">Result</string>
     <string name="explore_content_desc_search_icon">Search Icon</string>
+    <string name="explore_content_desc_illustration_icon">Illustration Explore the world</string>
+    <string name="explore_headline">Explore The World and Find Your Developers</string>
 
     <!-- for feedback message -->
     <string name="error_message_label">Error</string>

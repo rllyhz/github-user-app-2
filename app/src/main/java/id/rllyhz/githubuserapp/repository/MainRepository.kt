@@ -76,5 +76,19 @@ class MainRepository @Inject constructor(
         }
     }
 
-    suspend fun searchUsers(query: String) {}
+    suspend fun searchUsers(query: String): Resource<List<User>> {
+        return try {
+            val response = githubApi.searchUsers(query)
+            val result = response.body()
+
+            if (response.isSuccessful && result != null) {
+                val users = DataConverter.searchUsersToUserModels(result)
+                Resource.Success(users)
+            } else {
+                Resource.Error(response.message())
+            }
+        } catch (e: Exception) {
+            Resource.Error(application.getString(R.string.error_message))
+        }
+    }
 }

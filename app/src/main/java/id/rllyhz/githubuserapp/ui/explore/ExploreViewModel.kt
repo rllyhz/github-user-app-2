@@ -3,6 +3,7 @@ package id.rllyhz.githubuserapp.ui.explore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.repository.MainRepository
@@ -11,6 +12,8 @@ import id.rllyhz.githubuserapp.util.Resource
 import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,8 +25,8 @@ class ExploreViewModel @Inject constructor(
     private var _state: MutableStateFlow<ResourceEvent> = MutableStateFlow(ResourceEvent.Empty)
     val state: StateFlow<ResourceEvent> = _state
 
-    private var _searchResults: MutableLiveData<Resource<List<User>>> = MutableLiveData()
-    val searchResults: LiveData<Resource<List<User>>> = _searchResults
+    private var _searchResults: MutableLiveData<List<User>> = MutableLiveData()
+    val searchResults: LiveData<List<User>> = _searchResults
 
     private var _lastQuery: MutableLiveData<String> = MutableLiveData()
     val lastQuery: LiveData<String> = _lastQuery
@@ -33,6 +36,19 @@ class ExploreViewModel @Inject constructor(
     }
 
     fun searchUsers(query: String) {
-        _state.value = ResourceEvent.Loading
+        viewModelScope.launch(dispachers.default) {
+            _state.value = ResourceEvent.Loading
+
+            when (val response = repository.searchUsers(query)) {
+                is Resource.Error -> _state.value = ResourceEvent.Failure(response.message!!)
+                is Resource.Success -> {
+                    _state.value = ResourceEvent.Success(null, null)
+
+                    withContext(dispachers.main) {
+                        _searchResults.value = response.data!!
+                    }
+                }
+            }
+        }
     }
 }

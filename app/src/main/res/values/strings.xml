@@ -70,4 +70,5 @@
     <string name="functionality_not_implemented_message">This functionality hasn\'t been implemented yet</string>
 
     <string name="toolbar_menu_item_change_language_label">Change Language</string>
+    <string name="content_description_logo">Logo App</string>
 </resources>

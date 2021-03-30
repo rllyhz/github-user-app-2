@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="splash_screen_logo_size">160dp</dimen>
+
     <dimen name="bottom_nav_radius_size">16dp</dimen>
 
     <dimen name="home_user_list_height">460dp</dimen>

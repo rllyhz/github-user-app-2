@@ -13,15 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUserApp">
         <activity android:name=".ui.user_detail.UserDetailActivity" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:windowSoftInputMode="adjustPan">
+        <activity android:name=".ui.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

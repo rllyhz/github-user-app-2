@@ -1,6 +1,7 @@
 package id.rllyhz.githubuserapp.repository
 
 import android.app.Application
+import id.rllyhz.githubuserapp.BuildConfig
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.api.GithubApi
 import id.rllyhz.githubuserapp.data.model.User
@@ -14,7 +15,7 @@ class MainRepository @Inject constructor(
 ) {
     suspend fun getUsers(): Resource<List<User>> {
         return try {
-            val response = githubApi.getUsers()
+            val response = githubApi.getUsers(BuildConfig.GITHUB_API_TOKEN)
             val usersResponse = response.body()
 
             if (response.isSuccessful && usersResponse != null) {
@@ -30,7 +31,7 @@ class MainRepository @Inject constructor(
 
     suspend fun getUserDetail(username: String): Resource<User> {
         return try {
-            val response = githubApi.getUserDetailOf(username)
+            val response = githubApi.getUserDetailOf(BuildConfig.GITHUB_API_TOKEN, username)
             val result = response.body()
 
             if (response.isSuccessful && result != null) {
@@ -46,7 +47,7 @@ class MainRepository @Inject constructor(
 
     suspend fun getFollowersOfUser(username: String): Resource<List<User>> {
         return try {
-            val response = githubApi.getFollowersOfUser(username)
+            val response = githubApi.getFollowersOfUser(BuildConfig.GITHUB_API_TOKEN, username)
             val result = response.body()
 
             if (response.isSuccessful && result != null) {
@@ -62,7 +63,7 @@ class MainRepository @Inject constructor(
 
     suspend fun getFollowingOfUser(username: String): Resource<List<User>> {
         return try {
-            val response = githubApi.getFollowingOfUser(username)
+            val response = githubApi.getFollowingOfUser(BuildConfig.GITHUB_API_TOKEN, username)
             val result = response.body()
 
             if (response.isSuccessful && result != null) {
@@ -78,7 +79,7 @@ class MainRepository @Inject constructor(
 
     suspend fun searchUsers(query: String): Resource<List<User>> {
         return try {
-            val response = githubApi.searchUsers(query)
+            val response = githubApi.searchUsers(BuildConfig.GITHUB_API_TOKEN, query)
             val result = response.body()
 
             if (response.isSuccessful && result != null) {

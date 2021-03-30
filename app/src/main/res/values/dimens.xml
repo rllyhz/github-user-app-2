@@ -19,4 +19,6 @@
     <dimen name="profile_follows_repo_margin">60dp</dimen>
     <dimen name="profile_margin_to_guideline_horizontal">24dp</dimen>
     <dimen name="profile_view_pager_height">380dp</dimen>
+
+    <dimen name="explore_icon_size">24dp</dimen>
 </resources>

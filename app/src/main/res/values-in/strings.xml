@@ -1,0 +1,72 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Github User</string>
+
+    <!-- for actionbar -->
+    <string name="action_bar_title_home">Beranda</string>
+    <string name="action_bar_title_explore">Jelajahi</string>
+    <string name="action_bar_title_profile">Profil</string>
+    <string name="action_bar_title_user_detail">Detail Pengguna</string>
+
+    <!-- for headline in home ui -->
+    <string name="headline_1_text">Temukan developermu untuk membuat dunia lebih maju!</string>
+    <string name="headline_2_text">Ada 23.4 juta lebih developer yang tersedia di seluruh dunia</string>
+    <string name="home_user_list_label">Orang yang mungkin kamu kenal</string>
+
+    <!-- for bottom nav -->
+    <string name="bottom_nav_menu_home">Beranda</string>
+    <string name="bottom_nav_menu_explore">Jelajahi</string>
+    <string name="bottom_nav_menu_profile">Profil</string>
+
+    <!-- for item user ui -->
+    <string name="item_user_username">jakeWraton</string>
+    <string name="item_user_detail_icon_content_description">Tombol Rincian</string>
+    <string name="item_user_content_description_format">Foto %d</string>
+
+    <!-- for user detail ui -->
+    <string name="user_detail_fullname">Rully Ihza Mahendra</string>
+    <string name="user_detail_username">rllyhz</string>
+    <string name="user_detail_company_name">Soal-Web</string>
+    <string name="user_detail_location">Semarang, Central Java, Indonesia.</string>
+    <string name="user_detaill_bio_label">Biodata</string>
+    <string name="user_detail_bio">Take a deep breath for better ideas ☺</string>
+    <string name="user_detail_blog">rllyhz.github.io</string>
+    <string name="user_detail_following_followers">18 pengikut - 22 mengikuti</string>
+    <string name="user_detail_repository">43 repositori</string>
+    <plurals name="user_detail_repository_format" tools:ignore="UnusedQuantity">
+        <item quantity="one">%d repositori</item>
+        <item quantity="other">%d repositori</item>
+    </plurals>
+    <string name="user_detail_following_followers_format">%s pengikut - %s mengikuti</string>
+    <string name="user_detail_following_label">Mengikuti</string>
+    <string name="user_detail_followers_label">Pengikut</string>
+
+    <string name="user_detail_content_desc_location_icon">Ikon Lokasi</string>
+    <string name="user_detail_content_desc_company_icon">Ikon Perusahaan</string>
+    <string name="user_detail_content_desc_blog_url_icon">Ikon Blog Link</string>
+    <string name="user_detail_content_desc_follows_icon">Ikon Pengikut dan Mengikuti</string>
+    <string name="user_detail_content_desc_repository_icon">Ikon Repositori</string>
+
+    <string name="profile_following_label">Mengikuti</string>
+    <string name="profile_following_count">3.3k</string>
+    <string name="profile_followers_label">Pengikut</string>
+    <string name="profile_followers_count">4.54M</string>
+    <string name="profile_repository_label">Repositori</string>
+    <string name="profile_repository_count">234</string>
+    <string name="profile_edit_button_text">Ubah Profil</string>
+
+    <string name="explore_search_hint">Carilah developermu…</string>
+    <string name="explore_user_list_label">Hasil Pencarian</string>
+    <string name="explore_content_desc_search_icon">Ikon Pencarian</string>
+    <string name="explore_content_desc_illustration_icon">Ilustrasi Penjelahan Dunia</string>
+    <string name="explore_headline">Jelajahi Dunia dan Temukan Developermu</string>
+
+    <!-- for feedback message -->
+    <string name="error_message_label">Error</string>
+    <string name="error_message">Maaf, telah terjadi kesalahan :(</string>
+    <string name="redirect_message">Maaf, aktivitas tidak dapat dilakukan</string>
+    <string name="error_message_description">Ini mungkin terjadi karena tidak ada koneksi atau kesalahan internal telah terjadi.</string>
+    <string name="success_message">Berhasil mengambil data!</string>
+    <string name="result_not_found_message">Hasil tidak ditemukan!</string>
+
+    <string name="toolbar_menu_item_change_language_label">Ubah Bahasa</string>
+</resources>

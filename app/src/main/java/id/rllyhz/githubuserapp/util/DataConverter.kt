@@ -2,6 +2,7 @@ package id.rllyhz.githubuserapp.util
 
 import android.icu.text.CompactDecimalFormat
 import id.rllyhz.githubuserapp.data.model.User
+import id.rllyhz.githubuserapp.data.response.SearchUsersResponse
 import id.rllyhz.githubuserapp.data.response.UserDetailResponse
 import id.rllyhz.githubuserapp.data.response.UsersResponse
 import java.util.*
@@ -13,6 +14,29 @@ object DataConverter {
 
     fun usersResponseToUsersModel(usersResponse: List<UsersResponse>): List<User> {
         val allUsers = mutableListOf<User>()
+
+        for (user in usersResponse) {
+            user.apply {
+                allUsers.add(
+                    User(
+                        id = id,
+                        username = username,
+                        avatarUrl = avatar_url
+                    )
+                )
+            }
+        }
+
+        return allUsers
+    }
+
+    fun searchUsersToUserModels(searchUsersResponse: SearchUsersResponse): List<User> {
+        val allUsers = mutableListOf<User>()
+
+        if (searchUsersResponse.totalResults <= 0)
+            return allUsers
+
+        val usersResponse = searchUsersResponse.users
 
         for (user in usersResponse) {
             user.apply {

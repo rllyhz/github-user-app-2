@@ -60,7 +60,7 @@ class MainRepository @Inject constructor(
         }
     }
 
-    suspend fun getFollowingOfUser(username: String) : Resource<List<User>> {
+    suspend fun getFollowingOfUser(username: String): Resource<List<User>> {
         return try {
             val response = githubApi.getFollowingOfUser(username)
             val result = response.body()
@@ -75,4 +75,6 @@ class MainRepository @Inject constructor(
             Resource.Error(application.getString(R.string.error_message))
         }
     }
+
+    suspend fun searchUsers(query: String) {}
 }

@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor( // @ViewModelInject is deprecated for l
                     _usersEvent.value = ResourceEvent.Success(usersResponse.data!!, null)
 
                     withContext(dispachers.main) {
-                        _usersLiveData.value = usersResponse.data!!
+                        _usersLiveData.value = usersResponse.data
                     }
                 }
             }

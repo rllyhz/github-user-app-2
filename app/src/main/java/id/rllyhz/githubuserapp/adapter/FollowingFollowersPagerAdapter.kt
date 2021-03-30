@@ -20,9 +20,9 @@ class FollowingFollowersPagerAdapter(activity: AppCompatActivity, private val us
 
     override fun createFragment(position: Int): Fragment =
         when (position) {
-            0 -> FollowersFragment(user)
-            1 -> FollowingFragment(user)
-            else -> FollowersFragment(user)
+            0 -> FollowersFragment.newInstance(user)
+            1 -> FollowingFragment.newInstance(user)
+            else -> FollowersFragment.newInstance(user)
         }
 
     override fun getItemCount(): Int =

@@ -19,7 +19,7 @@ import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_follows),
+class FollowersFragment : Fragment(R.layout.fragment_follows),
     UserListAdapter.ItemClickCallback {
     // for this class, no need view binding
     private lateinit var recyclerView: RecyclerView
@@ -29,13 +29,29 @@ class FollowersFragment(private val user: User) : Fragment(R.layout.fragment_fol
 
     private val viewModel: FollowersViewModel by viewModels()
 
+    companion object {
+        private const val ARG_USER = "USER"
+
+        fun newInstance(user: User): FollowersFragment {
+            val args = Bundle().apply {
+                putParcelable(ARG_USER, user)
+            }
+
+            return FollowersFragment().apply {
+                arguments = args
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         usersAdapter = UserListAdapter()
         usersAdapter?.setOnItemListener(this)
 
-        viewModel.getFollowersOfUser(user.username)
+        arguments?.getParcelable<User>(ARG_USER)?.let { user ->
+            viewModel.getFollowersOfUser(user.username)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

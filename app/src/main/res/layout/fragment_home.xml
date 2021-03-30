@@ -84,7 +84,7 @@
 
             <TextView
                 android:id="@+id/tv_home_error_message"
-                style="@style/MyTextBold.HomeErrorText"
+                style="@style/MyTextBold.ErrorText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="120dp"
@@ -97,7 +97,7 @@
 
             <TextView
                 android:id="@+id/tv_home_error_message_description"
-                style="@style/MyTextMedium.HomeErrorDescriptionText"
+                style="@style/MyTextMedium.ErrorDescriptionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

@@ -85,6 +85,8 @@ class ExploreFragment : Fragment() {
             recyclerviewExplore.visibility = View.GONE
             llIllustrationContainer.visibility = View.GONE
             tvExploreNotFoundFeedback.visibility = View.GONE
+            tvExploreErrorMessage.visibility = View.VISIBLE
+            tvExploreErrorMessageDescription.visibility = View.VISIBLE
         }
     }
 
@@ -94,6 +96,8 @@ class ExploreFragment : Fragment() {
             recyclerviewExplore.visibility = View.VISIBLE
             llIllustrationContainer.visibility = View.GONE
             tvExploreNotFoundFeedback.visibility = View.GONE
+            tvExploreErrorMessage.visibility = View.GONE
+            tvExploreErrorMessageDescription.visibility = View.GONE
         }
     }
 
@@ -128,6 +132,8 @@ class ExploreFragment : Fragment() {
 
             recyclerviewExplore.visibility = View.GONE
             llIllustrationContainer.visibility = View.VISIBLE
+            tvExploreErrorMessage.visibility = View.GONE
+            tvExploreErrorMessageDescription.visibility = View.GONE
 
             swipeRefreshExplore.setOnRefreshListener {
                 searchUsers(lastQuery)

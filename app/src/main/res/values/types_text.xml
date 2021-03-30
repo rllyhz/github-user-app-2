@@ -13,6 +13,16 @@
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="MyTextBold.ErrorText">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MyTextMedium.ErrorDescriptionText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="MyTextBold.HomeHeadline1">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/white</item>
@@ -26,16 +36,6 @@
     <style name="MyTextBold.HomeUserListLabel">
         <item name="android:textSize">19sp</item>
         <item name="android:textColor">@color/grey_lighter</item>
-    </style>
-
-    <style name="MyTextBold.HomeErrorText">
-        <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="MyTextMedium.HomeErrorDescriptionText">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="MyTextMedium.ItemUserUsername">

@@ -88,7 +88,7 @@
 
         <TextView
             android:id="@+id/tv_explore_user_list_label"
-            style="@style/MyTextMedium.HomeHeadline2"
+            style="@style/MyTextMedium.ExploreUserListLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -112,7 +112,7 @@
 
         <TextView
             android:id="@+id/tv_explore_not_found_feedback"
-            style="@style/MyTextBold.HomeHeadline1"
+            style="@style/MyTextBold.ExploreFeedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="46dp"

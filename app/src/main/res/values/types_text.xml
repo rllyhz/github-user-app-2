@@ -82,4 +82,14 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/grey_light</item>
     </style>
+
+    <style name="MyTextBold.ExploreFeedback">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MyTextMedium.ExploreUserListLabel">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/grey_lighter</item>
+    </style>
 </resources>

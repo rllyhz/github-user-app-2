@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -110,18 +110,21 @@ class ExploreFragment : Fragment(), UserListAdapter.ItemClickCallback {
     private fun setupInitialUI() {
         binding.apply {
 
-            etExploreSearch.setOnEditorActionListener { etSearchView, actionId, _ ->
-                when (actionId) {
-                    EditorInfo.IME_ACTION_SEARCH -> {
-                        searchUsers(etSearchView.text.toString())
-                        true
+            svExploreSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let {
+                        searchUsers(it)
                     }
-                    else -> false
+                    return true
                 }
-            }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return true
+                }
+            })
 
             mcardExploreSearchIconContainer.setOnClickListener {
-                searchUsers(etExploreSearch.text.toString())
+                svExploreSearch.query?.toString()?.let { query -> searchUsers(query) }
             }
 
             recyclerviewExplore.apply {
@@ -160,13 +163,14 @@ class ExploreFragment : Fragment(), UserListAdapter.ItemClickCallback {
 
     private fun setSearchable(state: Boolean) {
         binding.apply {
-            etExploreSearch.isEnabled = state
-            etExploreSearch.isFocusableInTouchMode = state
+            svExploreSearch.isEnabled = state
+            svExploreSearch.isSubmitButtonEnabled = state
+            svExploreSearch.isFocusableInTouchMode = state
 
             if (state)
-                etExploreSearch.requestFocus()
+                svExploreSearch.requestFocus()
             else
-                etExploreSearch.clearFocus()
+                svExploreSearch.clearFocus()
         }
     }
 

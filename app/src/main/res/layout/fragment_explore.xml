@@ -42,20 +42,19 @@
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/et_explore_search"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_explore_search"
             style="@style/ExploreSearchView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/bg_edit_text_search_explore"
-            android:hint="@string/explore_search_hint"
-            android:importantForAutofill="no"
             android:paddingHorizontal="16dp"
             app:layout_constraintBottom_toBottomOf="@id/mcard_explore_search_icon_container"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/mcard_explore_search_icon_container"
-            app:layout_constraintTop_toTopOf="@id/mcard_explore_search_icon_container" />
+            app:layout_constraintTop_toTopOf="@id/mcard_explore_search_icon_container"
+            app:queryHint="@string/explore_search_hint" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/mcard_explore_search_icon_container"
@@ -95,7 +94,7 @@
             android:text="@string/explore_user_list_label"
             android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_explore_search" />
+            app:layout_constraintTop_toBottomOf="@id/sv_explore_search" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_explore"
@@ -120,7 +119,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_explore_search" />
+            app:layout_constraintTop_toBottomOf="@id/sv_explore_search" />
 
         <TextView
             android:id="@+id/tv_explore_error_message"

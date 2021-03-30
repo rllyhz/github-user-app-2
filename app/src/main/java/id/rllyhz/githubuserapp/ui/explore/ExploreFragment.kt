@@ -1,5 +1,6 @@
 package id.rllyhz.githubuserapp.ui.explore
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.githubuserapp.R
 import id.rllyhz.githubuserapp.adapter.UserListAdapter
+import id.rllyhz.githubuserapp.data.model.User
 import id.rllyhz.githubuserapp.databinding.FragmentExploreBinding
+import id.rllyhz.githubuserapp.ui.user_detail.UserDetailActivity
 import id.rllyhz.githubuserapp.util.ResourceEvent
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class ExploreFragment : Fragment() {
+class ExploreFragment : Fragment(), UserListAdapter.ItemClickCallback {
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!! // this approach is from official documentation
 
@@ -32,6 +35,7 @@ class ExploreFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         userListAdapter = UserListAdapter()
+        userListAdapter?.setOnItemListener(this)
     }
 
     override fun onCreateView(
@@ -190,6 +194,13 @@ class ExploreFragment : Fragment() {
                     else -> Unit
                 }
             }
+        }
+    }
+
+    override fun onDetailIconClick(user: User) {
+        Intent(requireActivity(), UserDetailActivity::class.java).run {
+            putExtra(UserDetailActivity.USER_EXTRAS, user)
+            requireActivity().startActivity(this)
         }
     }
 

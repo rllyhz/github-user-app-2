@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -47,7 +48,7 @@ class ProfileFragment : Fragment() {
 
         // this should be from a real user retrieved from current user that being active
         // but for now this is just for dummy case, my own username as the user
-        val username = "rllyhz"
+        val username = resources.getString(R.string.user_detail_username)
         viewModel.getUserInfo(username)
     }
 
@@ -60,6 +61,14 @@ class ProfileFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.blue_200),
                 ContextCompat.getColor(requireContext(), R.color.blue_500)
             )
+
+            mBtnProfileEditProfile.setOnClickListener {
+                Toast.makeText(
+                    requireContext(),
+                    resources.getString(R.string.functionality_not_implemented_message),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
 
             viewModel.currentUserActive.observe(requireActivity()) { currentUserActive ->
 

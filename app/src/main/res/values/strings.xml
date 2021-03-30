@@ -67,6 +67,7 @@
     <string name="error_message_description">This happens maybe because of there is no connection or something unexpected internally occurred.</string>
     <string name="success_message">Successfully fetched!</string>
     <string name="result_not_found_message">Result not found!</string>
+    <string name="functionality_not_implemented_message">This functionality hasn\'t been implemented yet</string>
 
     <string name="toolbar_menu_item_change_language_label">Change Language</string>
 </resources>

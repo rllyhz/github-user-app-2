@@ -67,6 +67,7 @@
     <string name="error_message_description">Ini mungkin terjadi karena tidak ada koneksi atau kesalahan internal telah terjadi.</string>
     <string name="success_message">Berhasil mengambil data!</string>
     <string name="result_not_found_message">Hasil tidak ditemukan!</string>
+    <string name="functionality_not_implemented_message">Fungsionalitas ini belum diimplementasikan</string>
 
     <string name="toolbar_menu_item_change_language_label">Ubah Bahasa</string>
 </resources>

@@ -77,10 +77,9 @@ You can clone this repo and import to your Android Studio
 
 ## Author
 
-[**Rully Ihza Mahendra**](https://www.linkedin.com/in/rllyhz/)
-[**My Personal Web**](https://rllyhz.github.io) - https://rllyhz.github.io
-[**rullyihza00@gmail.com**](rullyihza00@gmail.com)
-
+**Rully Ihza Mahendra** - Reach me on LinkedIn [here](https://www.linkedin.com/in/rully-ihza-mahendra-275a591a5/) </br>
+**My Personal Web** - [https://rllyhz.github.io](https://rllyhz.github.io) </br>
+**My Email** - [rullyihza00@gmail.com](rullyihza00@gmail.com) </br>
 
 ## You can support me
 

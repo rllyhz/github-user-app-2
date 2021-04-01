@@ -39,6 +39,7 @@ You can clone this repo and import to your Android Studio
         width="200" />
     <img src="assets/explore_searching.jpg"
         alt="Explore Screen Searhing Mode"
+        width="200" />
 </p>
 
 

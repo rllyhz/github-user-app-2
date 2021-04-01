@@ -11,6 +11,45 @@ You can clone this repo and import to your Android Studio
 
 ## Demo
 
+<h3 align="center">
+  Home
+</h3>
+<p align="center">
+    <img src="assets/home.jpg"
+        alt="Home Screen"
+        width="200" />
+</p>
+
+<h3 align="center">
+  User Detail
+</h3>
+<p align="center">
+    <img src="assets/home.jpg"
+        alt="User Detail Screen"
+        width="200" />
+</p>
+
+<h3 align="center">
+  Explore
+</h3>
+<p align="center">
+    <img src="assets/explore.jpg"
+        alt="Explore Screen Empty"
+        style="margin-right: 10px;"
+        width="200" />
+    <img src="assets/explore_searching.jpg"
+        alt="Explore Screen Searhing Mode"
+</p>
+
+
+<h3 align="center">
+  Profile
+</h3>
+<p align="center">
+    <img src="assets/profile.jpg"
+        alt="Profile Screen"
+        width="200" />
+</p>
 
 
 ## Features:

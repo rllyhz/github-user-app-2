@@ -1,6 +1,6 @@
 # Dicoding Submission: Belajar Fundamental Aplikasi Android (Submission 2)
 
-This repository is the result of my submission project in [Dicoding Academy](https://www.dicoding.com) class, **Learn Fundamental Android Application** that implements MVVM(Model View ViewModel) architecture using the components ViewModel, LiveData, Dagger2, Room, etc.
+This repository is the result of my submission project in [Dicoding Academy](https://www.dicoding.com) class, **Learn Fundamental Android Application** that implements MVVM(Model View ViewModel) architecture using the components ViewModel, LiveData, Dagger2, Room, etc. </br>
 This project **gets 5 start** 🎉🎉
 
 You can clone this repo and import to your Android Studio

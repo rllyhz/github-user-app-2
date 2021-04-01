@@ -90,8 +90,8 @@ class UserDetailActivity : AppCompatActivity() {
 
                 tvUserDetailFollowingFollowersCount.text = resources.getString(
                     R.string.user_detail_following_followers_format,
-                    DataConverter.getFollowingAndFollowersFormat(user.followingCount),
-                    DataConverter.getFollowingAndFollowersFormat(user.followersCount)
+                    DataConverter.getFollowingAndFollowersFormat(user.followersCount),
+                    DataConverter.getFollowingAndFollowersFormat(user.followingCount)
                 )
 
                 tvUserDetailRepositoryCount.text = resources.getQuantityString(

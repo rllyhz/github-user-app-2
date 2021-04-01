@@ -1,12 +1,17 @@
-Dicoding Submission: Belajar Fundamental Aplikasi Android
+# Dicoding Submission: Belajar Fundamental Aplikasi Android (Submission 2)
 
 This repository is the result of my submission project in [Dicoding Academy](https://www.dicoding.com) class, **Learn Fundamental Android Application** that implements MVVM(Model View ViewModel) architecture using the components ViewModel, LiveData, Dagger2, Room, etc.
+This project **gets 5 start** 🎉🎉
 
 You can clone this repo and import to your Android Studio
 
 ```
     https://github.com/rllyhz/github-user-app-2
 ```
+
+## Demo
+
+
 
 ## Features:
 
@@ -19,6 +24,28 @@ You can clone this repo and import to your Android Studio
 - Using Kotlin StateFlow to handle state flow of data
 - Using Retrofit to request API network
 - Using Glide for loading and caching image from URL
+
+## Dependencies :
+- [Lifecycle & Livedata](https://developer.android.com/jetpack/androidx/releases/lifecycle)
+- [Navigation Component](https://developer.android.com/jetpack/androidx/releases/navigation)
+- [Dagger Hilt](https://dagger.dev/hilt/)
+- [Retrofit 2](https://square.github.io/retrofit/)
+- [Glide](https://github.com/bumptech/glide)
+- [AndroidX](https://mvnrepository.com/artifact/androidx)
+- [Kotlin StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
+
+
+## Author
+
+[**Rully Ihza Mahendra**](https://www.linkedin.com/in/rllyhz/)
+[**My Personal Web**](https://rllyhz.github.io) - https://rllyhz.github.io
+[**rullyihza00@gmail.com**](rullyihza00@gmail.com)
+
+
+## You can support me
+
+> Just **star** or  **fork** this repository, and follow my github. You have *supported* me!
+
 
 ## LICENSE
 

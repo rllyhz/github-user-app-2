@@ -25,7 +25,7 @@ You can clone this repo and import to your Android Studio
   User Detail
 </h3>
 <p align="center">
-    <img src="assets/home.jpg"
+    <img src="assets/user_detail.jpg"
         alt="User Detail Screen"
         width="200" />
 </p>

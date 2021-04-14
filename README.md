@@ -60,7 +60,6 @@ You can clone this repo and import to your Android Studio
 - Using Dagger Hilt for dependency injection
 - Using Navigation Components for Navigation UI
 - Using Localization for support Indonesian and English languages
-- Using Room Persistence for local database
 - Using ViewBinding
 - Using Kotlin StateFlow to handle state flow of data
 - Using Retrofit to request API network

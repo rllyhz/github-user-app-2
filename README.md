@@ -7,7 +7,7 @@ This project **gets 5 stars** 🎉🎉
 You can clone this repo and import to your Android Studio
 
 ```
-    https://github.com/rllyhz/github-user-app-2
+  https://github.com/rllyhz/github-user-app-2.git
 ```
 
 ## Demo
